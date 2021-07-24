@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Dapper.FluentMap" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DubaiSmoke.Users.Application\DubaiSmoke.Users.Application.csproj" />
+    <ProjectReference Include="..\DubaiSmoke.Users.Domain\DubaiSmoke.Users.Domain.csproj" />
+    <ProjectReference Include="..\DubaiSmoke.Users.Infrastructure\DubaiSmoke.Users.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

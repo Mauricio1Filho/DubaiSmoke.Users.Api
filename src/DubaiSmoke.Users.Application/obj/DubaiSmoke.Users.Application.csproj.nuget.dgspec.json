@@ -1,0 +1,140 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Development\\Visual Studio\\DubaiSmoke.Users.Api\\src\\DubaiSmoke.Users.Application\\DubaiSmoke.Users.Application.csproj": {}
+  },
+  "projects": {
+    "D:\\Development\\Visual Studio\\DubaiSmoke.Users.Api\\src\\DubaiSmoke.Users.Application\\DubaiSmoke.Users.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Development\\Visual Studio\\DubaiSmoke.Users.Api\\src\\DubaiSmoke.Users.Application\\DubaiSmoke.Users.Application.csproj",
+        "projectName": "DubaiSmoke.Users.Application",
+        "projectPath": "D:\\Development\\Visual Studio\\DubaiSmoke.Users.Api\\src\\DubaiSmoke.Users.Application\\DubaiSmoke.Users.Application.csproj",
+        "packagesPath": "C:\\Users\\Mauricio Cirino\\.nuget\\packages\\",
+        "outputPath": "D:\\Development\\Visual Studio\\DubaiSmoke.Users.Api\\src\\DubaiSmoke.Users.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Mauricio Cirino\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\Development\\Visual Studio\\DubaiSmoke.Users.Api\\src\\DubaiSmoke.Users.Domain\\DubaiSmoke.Users.Domain.csproj": {
+                "projectPath": "D:\\Development\\Visual Studio\\DubaiSmoke.Users.Api\\src\\DubaiSmoke.Users.Domain\\DubaiSmoke.Users.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[10.3.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Development\\Visual Studio\\DubaiSmoke.Users.Api\\src\\DubaiSmoke.Users.Domain\\DubaiSmoke.Users.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Development\\Visual Studio\\DubaiSmoke.Users.Api\\src\\DubaiSmoke.Users.Domain\\DubaiSmoke.Users.Domain.csproj",
+        "projectName": "DubaiSmoke.Users.Domain",
+        "projectPath": "D:\\Development\\Visual Studio\\DubaiSmoke.Users.Api\\src\\DubaiSmoke.Users.Domain\\DubaiSmoke.Users.Domain.csproj",
+        "packagesPath": "C:\\Users\\Mauricio Cirino\\.nuget\\packages\\",
+        "outputPath": "D:\\Development\\Visual Studio\\DubaiSmoke.Users.Api\\src\\DubaiSmoke.Users.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Mauricio Cirino\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.13.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
