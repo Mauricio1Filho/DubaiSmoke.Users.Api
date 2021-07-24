@@ -6,6 +6,7 @@ namespace DubaiSmoke.Users.Application.ViewModels
     {
         [Required(ErrorMessage = "*")]
         public string name { get; set; }
+        [Required(ErrorMessage = "*")]
         public string birthDay { get; set; }
         [Required(ErrorMessage = "*")]
         public string login { get; set; }
