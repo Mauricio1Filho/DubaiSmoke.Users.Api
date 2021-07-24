@@ -29,16 +29,6 @@ namespace DubaiSmoke.Users.Application.Services
             return _mapper.Map<UserViewModel>(await _userService.SelectAsync(id));
         }
 
-        public async Task<List<UserViewModel>> GetUserByName(string name)
-        {
-            return _mapper.Map<List<UserViewModel>>(await _userService.GetUserByName(name));
-        }
-
-        public async Task<UserViewModel> GetUserByEmail(string email)
-        {
-            return _mapper.Map<UserViewModel>(await _userService.GetUserByEmail(email));
-        }
-
         public async Task<UserViewModel> UpdateAsync(UserViewModel user)
         {
             return _mapper.Map<UserViewModel>(await _userService.UpdateAsync(_mapper.Map<UserEntity>(user)));

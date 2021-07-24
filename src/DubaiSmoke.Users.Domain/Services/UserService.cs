@@ -24,10 +24,6 @@ namespace DubaiSmoke.Users.Domain.Services
         {
             return await _userRepository.SelectAsync(id);
         }
-        public async Task<List<UserEntity>> GetUserByName(string name)
-        {
-            return await _userRepository.GetByName(name);
-        }
 
         public async Task<long> InsertAsync(UserEntity user)
         {
@@ -37,11 +33,6 @@ namespace DubaiSmoke.Users.Domain.Services
         public async Task<UserEntity> UpdateAsync(UserEntity user)
         {
             return await _userRepository.UpdateAsync(user);
-        }
-
-        public async Task<UserEntity> GetUserByEmail(string email)
-        {
-            return await _userRepository.GetUserByEmail(email);
         }
     }
 }

@@ -26,6 +26,13 @@ namespace DubaiSmoke.Users.Api.Controllers
             return Ok(await _addressServiceApp.SelectAsync(id));
         }
 
+        [HttpGet("User/{userId}")]
+        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> GetAddressByUserId(int userId)
+        {
+            return Ok(await _addressServiceApp.GetAddressByUserId(userId));
+        }
+
         [HttpPost]
         [ProducesResponseType(typeof(long), (int)HttpStatusCode.Created)]
         [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
@@ -47,13 +54,6 @@ namespace DubaiSmoke.Users.Api.Controllers
         public async Task<IActionResult> DeleteAsync(long id)
         {
             return Ok(await _addressServiceApp.DeleteAsync(id));
-        }
-
-        [HttpGet("User/{userId}")]
-        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> GetAddressByUserId(int userId)
-        {
-            return Ok(await _addressServiceApp.GetAddressByUserId(userId));
         }
     }
 }

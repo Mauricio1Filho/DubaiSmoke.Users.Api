@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using Dapper;
-using DubaiSmoke.Users.Domain.Aggregates;
 using DubaiSmoke.Users.Domain.Entities;
 using DubaiSmoke.Users.Domain.Repositories;
 using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -62,53 +60,17 @@ namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
                     item.HashCode = hash.ToString();
                     var response = await connection.QueryAsync<long>(sql, item);
                     id = response.FirstOrDefault();
-                   
-                  //  await _userAggregateRepository.InsertAsync(item);
+
+                    //  await _userAggregateRepository.InsertAsync(item);
                 }
                 catch (Exception error)
                 {
-
-
-
                 }
                 finally
                 {
                     connection.Close();
                 }
                 return id;
-            }
-        }
-
-        public async Task<UserEntity> GetUserByEmail(string login)
-        {
-            string sql = @"SELECT * FROM users WHERE TXT_LOGIN = @Login;";
-            using (var connection = new MySqlConnection(ConnectionString))
-            {
-                try
-                {
-                    return await connection.QuerySingleAsync<UserEntity>(sql, new { login = login });
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-        }
-
-        public async Task<List<UserEntity>> GetByName(string name)
-        {
-            string sql = @"SELECT * FROM users WHERE NM_USER LIKE CONCAT ('%',@name,'%');";
-            using (var connection = new MySqlConnection(ConnectionString))
-            {
-                try
-                {
-                    var result = await connection.QueryAsync<UserEntity>(sql, new { name = name });
-                    return result.ToList();
-                }
-                finally
-                {
-                    connection.Close();
-                }
             }
         }
 
@@ -132,7 +94,7 @@ namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
         {
             string sql = @"UPDATE users SET
                            NM_USER = @Name,
-                           DT_BIRTH = @BirthDay 
+                           DT_BIRTH = @BirthDay, 
                            TXT_LOGIN = @Login,
                            TXT_PWD = @Password,
                            DT_UPDATED = @UpdatedAt

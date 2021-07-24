@@ -6,3 +6,4 @@ D:\Development\Visual Studio\DubaiSmoke.Users.Api\src\DubaiSmoke.Users.Domain\bi
 D:\Development\Visual Studio\DubaiSmoke.Users.Api\src\DubaiSmoke.Users.Domain\bin\Debug\netcoreapp3.1\DubaiSmoke.Users.Domain.pdb
 D:\Development\Visual Studio\DubaiSmoke.Users.Api\src\DubaiSmoke.Users.Domain\obj\Debug\netcoreapp3.1\DubaiSmoke.Users.Domain.dll
 D:\Development\Visual Studio\DubaiSmoke.Users.Api\src\DubaiSmoke.Users.Domain\obj\Debug\netcoreapp3.1\DubaiSmoke.Users.Domain.pdb
+D:\Development\Visual Studio\DubaiSmoke.Users.Api\src\DubaiSmoke.Users.Domain\obj\Debug\netcoreapp3.1\DubaiSmoke.Users.Domain.csproj.AssemblyReference.cache

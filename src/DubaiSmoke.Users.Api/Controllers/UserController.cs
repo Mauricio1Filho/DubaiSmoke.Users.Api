@@ -26,20 +26,6 @@ namespace DubaiSmoke.Users.Api.Controllers
             return Ok(await _userServiceApp.SelectAsync(id));
         }
 
-        [HttpGet("name/{name}")]
-        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> GetUserByName(string name)
-        {
-            name = WebUtility.UrlDecode(name);
-            return Ok(await _userServiceApp.GetUserByName(name));
-        }
-
-        [HttpGet("email/{email}")]
-        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> GetUserByEmail(string email)
-        {
-            return Ok(await _userServiceApp.GetUserByEmail(email));
-        }
         [HttpPost]
         [ProducesResponseType(typeof(long), (int)HttpStatusCode.Created)]
         [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]

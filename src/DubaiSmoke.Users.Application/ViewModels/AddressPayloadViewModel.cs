@@ -5,6 +5,8 @@ namespace DubaiSmoke.Users.Application.ViewModels
     public class AddressPayloadViewModel
     {
         [Required(ErrorMessage = "*")]
+        public long userId { get; set; }
+        [Required(ErrorMessage = "*")]
         public string addressName { get; set; }
         [Required(ErrorMessage = "*")]
         public int addressNumber { get; set; }

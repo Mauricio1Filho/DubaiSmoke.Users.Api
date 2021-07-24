@@ -5,9 +5,9 @@ namespace DubaiSmoke.Users.Application.ViewModels
 {
     public class ContactTypeViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "*")]
         public long id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "*")]
         public string name { get; set; }
     }
 }

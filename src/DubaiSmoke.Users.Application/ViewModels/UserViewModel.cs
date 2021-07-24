@@ -10,5 +10,7 @@ namespace DubaiSmoke.Users.Application.ViewModels
         public string birthDay { get; set; }
         [Required(ErrorMessage = "*")]
         public string login { get; set; }
+        [Required(ErrorMessage = "*")]
+        public string password { get; set; }
     }
 }

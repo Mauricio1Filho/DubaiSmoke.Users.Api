@@ -29,7 +29,7 @@ namespace DubaiSmoke.Users.Application.Services
             return _mapper.Map<ContactViewModel>(await _contactService.SelectAsync(id));
         }
 
-        public async Task<ContactViewModel> UpdateAsync(ContactViewModel contact)
+        public async Task<ContactViewModel> UpdateAsync(ContactPayloadViewModel contact)
         {
             return _mapper.Map<ContactViewModel>(await _contactService.UpdateAsync(_mapper.Map<ContactEntity>(contact)));
         }

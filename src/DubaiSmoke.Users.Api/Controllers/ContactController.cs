@@ -45,7 +45,7 @@ namespace DubaiSmoke.Users.Api.Controllers
         [HttpPut]
         [ProducesResponseType(typeof(ContactViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> UpdateAsync([FromBody] ContactViewModel payload)
+        public async Task<IActionResult> UpdateAsync([FromBody] ContactPayloadViewModel payload)
         {
             return Ok(await _contactServiceApp.UpdateAsync(payload));
         }

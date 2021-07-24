@@ -50,9 +50,9 @@ namespace DubaiSmoke.Users.Api
             });
 
             services.AddTransient<IValidator<UserPayloadViewModel>, UserValidator>();
-            services.AddTransient<IValidator<ContactViewModel>, ContactValidator>();
-            services.AddTransient<IValidator<ContactTypeViewModel>, ContactTypeValidator>();
-            services.AddTransient<IValidator<AddressViewModel>, AddressValidator>();
+            services.AddTransient<IValidator<ContactPayloadViewModel>, ContactValidator>();
+            services.AddTransient<IValidator<ContactTypePayloadViewModel>, ContactTypeValidator>();
+            services.AddTransient<IValidator<AddressPayloadViewModel>, AddressValidator>();
             var mongoConfig = new MongoConfig();
             Configuration.Bind("MongoConfig", mongoConfig);
             services.AddSingleton(mongoConfig);
