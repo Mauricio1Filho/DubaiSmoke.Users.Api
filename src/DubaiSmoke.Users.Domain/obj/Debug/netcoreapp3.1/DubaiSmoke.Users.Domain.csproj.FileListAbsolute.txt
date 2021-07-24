@@ -1,9 +1,0 @@
-D:\Development\Visual Studio\DubaiSmoke.Users.Api\src\DubaiSmoke.Users.Domain\obj\Debug\netcoreapp3.1\DubaiSmoke.Users.Domain.AssemblyInfoInputs.cache
-D:\Development\Visual Studio\DubaiSmoke.Users.Api\src\DubaiSmoke.Users.Domain\obj\Debug\netcoreapp3.1\DubaiSmoke.Users.Domain.AssemblyInfo.cs
-D:\Development\Visual Studio\DubaiSmoke.Users.Api\src\DubaiSmoke.Users.Domain\obj\Debug\netcoreapp3.1\DubaiSmoke.Users.Domain.csproj.CoreCompileInputs.cache
-D:\Development\Visual Studio\DubaiSmoke.Users.Api\src\DubaiSmoke.Users.Domain\bin\Debug\netcoreapp3.1\DubaiSmoke.Users.Domain.deps.json
-D:\Development\Visual Studio\DubaiSmoke.Users.Api\src\DubaiSmoke.Users.Domain\bin\Debug\netcoreapp3.1\DubaiSmoke.Users.Domain.dll
-D:\Development\Visual Studio\DubaiSmoke.Users.Api\src\DubaiSmoke.Users.Domain\bin\Debug\netcoreapp3.1\DubaiSmoke.Users.Domain.pdb
-D:\Development\Visual Studio\DubaiSmoke.Users.Api\src\DubaiSmoke.Users.Domain\obj\Debug\netcoreapp3.1\DubaiSmoke.Users.Domain.dll
-D:\Development\Visual Studio\DubaiSmoke.Users.Api\src\DubaiSmoke.Users.Domain\obj\Debug\netcoreapp3.1\DubaiSmoke.Users.Domain.pdb
-D:\Development\Visual Studio\DubaiSmoke.Users.Api\src\DubaiSmoke.Users.Domain\obj\Debug\netcoreapp3.1\DubaiSmoke.Users.Domain.csproj.AssemblyReference.cache
