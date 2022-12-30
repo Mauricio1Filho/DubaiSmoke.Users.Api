@@ -57,7 +57,7 @@ namespace DubaiSmoke.Users.Api
             Configuration.Bind("MongoConfig", mongoConfig);
             services.AddSingleton(mongoConfig);
             
-            services.AddTransient<IMongoConfigSettings, MongoConfigSettings>();
+            //services.AddTransient<IMongoConfigSettings, MongoConfigSettings>();
           
 
         }

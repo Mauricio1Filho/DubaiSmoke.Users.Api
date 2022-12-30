@@ -26,7 +26,7 @@ namespace DubaiSmoke.Users.Api.Controllers
             return Ok(await _userServiceApp.SelectAsync(id));
         }
 
-        [HttpPost]
+        [HttpPost("register")]
         [ProducesResponseType(typeof(long), (int)HttpStatusCode.Created)]
         [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> InsertAsync([FromServices] IHttpContextAccessor context, [FromBody] UserPayloadViewModel payload)
@@ -34,7 +34,7 @@ namespace DubaiSmoke.Users.Api.Controllers
             return Created(context.HttpContext.Request.Path, await _userServiceApp.InsertAsync(payload));
         }
 
-        [HttpPut]
+        [HttpPut("update")]
         [ProducesResponseType(typeof(UserViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> UpdateAsync([FromBody] UserViewModel payload)

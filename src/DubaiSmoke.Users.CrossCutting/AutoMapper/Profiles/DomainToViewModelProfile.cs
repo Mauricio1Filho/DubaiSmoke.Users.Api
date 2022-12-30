@@ -14,11 +14,9 @@ namespace DubaiSmoke.Users.CrossCutting.AutoMapper.Profiles
                 .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.login, opt => opt.MapFrom(src => src.Login))
                 .ForMember(dest => dest.name, opt => opt.MapFrom(src => src.Name));
-
             CreateMap<AddressEntity, AddressViewModel>();
             CreateMap<ContactEntity, ContactViewModel>();
             CreateMap<ContactTypeEntity, ContactTypeViewModel>();
-
             CreateMap<UserEntity, UserAggregate>()
                 .ForMember(dest => dest.name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.userId, opt => opt.MapFrom(src => src.Id));

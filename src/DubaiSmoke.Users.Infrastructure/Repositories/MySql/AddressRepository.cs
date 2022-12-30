@@ -70,7 +70,7 @@ namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
         public async Task<long> InsertAsync(AddressEntity item)
         {
             var hash = Guid.NewGuid();
-            string sql = @"INSERT INTO address (ID_USER, TXT_ADDRESS, NR_ADDRESS, TXT_COMPLEMENT, TXT_POSTAL_CODE, DT_CREATED, DT_UPDATED, DT_DELETED, HASH_CODE)
+            string sql = @"INSERT INTO address (ID_USERS, TXT_ADDRESS, NR_ADDRESS, TXT_COMPLEMENT, TXT_POSTAL_CODE, DT_CREATED, DT_UPDATED, DT_DELETED, HASH_CODE)
                             Values (@UserId, @AddressName, @AddressNumber, @AddressComplement,@PostalCode, @CreatedAt, @UpdatedAt, @DeletedAt, @HashCode);
                                 SELECT ID FROM address WHERE HASH_CODE = @HashCode";
             using var connection = new MySqlConnection(ConnectionString);

@@ -11,16 +11,16 @@ using System.Threading.Tasks;
 namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
 {
     public class UserRepository : IUserRepository
-    {
+    {        
         private readonly IMapper _mapper;
         private readonly IConfiguration Configuration;
         private string ConnectionString;
-        private readonly IUserAggregateRepository _userAggregateRepository;
-        public UserRepository(IConfiguration configuration, IMapper mapper, IUserAggregateRepository userAggregateRepository)
+        //private readonly IUserAggregateRepository _userAggregateRepository;
+        public UserRepository(IConfiguration configuration, IMapper mapper )
         {
             Configuration = configuration;
             ConnectionString = Configuration.GetConnectionString("DubaiSmokeDb");
-            _userAggregateRepository = userAggregateRepository;
+            //_userAggregateRepository = userAggregateRepository;
             _mapper = mapper;
         }
 
@@ -62,10 +62,7 @@ namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
                     id = response.FirstOrDefault();
 
                     //  await _userAggregateRepository.InsertAsync(item);
-                }
-                catch (Exception error)
-                {
-                }
+                }           
                 finally
                 {
                     connection.Close();

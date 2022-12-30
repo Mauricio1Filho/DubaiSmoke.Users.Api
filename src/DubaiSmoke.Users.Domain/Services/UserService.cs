@@ -1,7 +1,6 @@
 ﻿using DubaiSmoke.Users.Domain.Entities;
 using DubaiSmoke.Users.Domain.Interfaces;
 using DubaiSmoke.Users.Domain.Repositories;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DubaiSmoke.Users.Domain.Services
