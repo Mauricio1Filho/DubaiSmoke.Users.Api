@@ -25,7 +25,7 @@ namespace DubaiSmoke.Users.Api.Controllers
             return Ok(await _contactTypeServiceApp.SelectAsync(id));
         }
 
-        [HttpPost]
+        [HttpPost("register")]
         [ProducesResponseType(typeof(long), (int)HttpStatusCode.Created)]
         [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> InsertAsync([FromServices] IHttpContextAccessor context,[FromBody] ContactTypePayloadViewModel payload)
@@ -33,7 +33,7 @@ namespace DubaiSmoke.Users.Api.Controllers
             return Created(context.HttpContext.Request.Path, await _contactTypeServiceApp.InsertAsync(payload));
         }
 
-        [HttpPut]
+        [HttpPut("update")]
         [ProducesResponseType(typeof(ContactTypeViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> UpdateAsync([FromBody] ContactTypeViewModel payload)

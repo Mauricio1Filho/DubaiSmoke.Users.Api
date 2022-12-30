@@ -62,7 +62,7 @@ namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
                 {
                     connection.Close();
                 }
-
+                
                 return id;
             }
         }

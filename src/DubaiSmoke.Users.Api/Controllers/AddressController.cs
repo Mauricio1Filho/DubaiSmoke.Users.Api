@@ -26,14 +26,14 @@ namespace DubaiSmoke.Users.Api.Controllers
             return Ok(await _addressServiceApp.SelectAsync(id));
         }
 
-        [HttpGet("User/{userId}")]
+        [HttpGet("user/{userId}")]
         [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> GetAddressByUserId(int userId)
         {
             return Ok(await _addressServiceApp.GetAddressByUserId(userId));
         }
 
-        [HttpPost]
+        [HttpPost("register")]
         [ProducesResponseType(typeof(long), (int)HttpStatusCode.Created)]
         [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> InsertAsync([FromServices] IHttpContextAccessor context, [FromBody] AddressPayloadViewModel payload)
@@ -41,7 +41,7 @@ namespace DubaiSmoke.Users.Api.Controllers
             return Created(context.HttpContext.Request.Path, await _addressServiceApp.InsertAsync(payload));
         }
 
-        [HttpPut]
+        [HttpPut("update")]
         [ProducesResponseType(typeof(AddressViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> UpdateAsync([FromBody] AddressPayloadViewModel payload)

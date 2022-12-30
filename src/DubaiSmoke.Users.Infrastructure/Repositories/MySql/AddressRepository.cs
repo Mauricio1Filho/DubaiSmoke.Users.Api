@@ -44,8 +44,8 @@ namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
         public async Task<List<AddressEntity>> GetAddressByUserId(long userId)
         {
             string sql = @"SELECT ad.*, u.*  FROM address AS ad
-                            JOIN users u ON u.ID = ad.ID_USER
-                            WHERE ad.ID_USER = @userId";
+                            JOIN users u ON u.ID = ad.ID_USERS
+                            WHERE ad.ID_USERS = @userId";
             using (var connection = new MySqlConnection(ConnectionString))
             {
                 try
