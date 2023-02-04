@@ -1,7 +1,4 @@
-﻿using DubaiSmoke.Users.Domain.Interfaces;
-using MongoDB.Driver;
-
-namespace DubaiSmoke.Users.Domain.Config
+﻿namespace DubaiSmoke.Users.Domain.Config
 {
     //public class MongoConfigSettings : IMongoConfigSettings
     //{

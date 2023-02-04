@@ -3,7 +3,6 @@ using DubaiSmoke.Users.Application.Interfaces;
 using DubaiSmoke.Users.Application.ViewModels;
 using DubaiSmoke.Users.Domain.Entities;
 using DubaiSmoke.Users.Domain.Interfaces;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DubaiSmoke.Users.Application.Services

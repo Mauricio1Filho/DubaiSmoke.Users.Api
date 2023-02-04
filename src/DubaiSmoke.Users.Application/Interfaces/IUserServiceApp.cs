@@ -1,5 +1,4 @@
 ﻿using DubaiSmoke.Users.Application.ViewModels;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DubaiSmoke.Users.Application.Interfaces

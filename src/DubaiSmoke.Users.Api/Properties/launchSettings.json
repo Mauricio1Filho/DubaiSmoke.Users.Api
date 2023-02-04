@@ -8,6 +8,14 @@
         "ASPNETCORE_ENVIRONMENT": "dev"
       },
       "applicationUrl": "http://localhost:5001"
+    },
+    "DubaiSmoke.Users.Api.Prod": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "prod"
+      },
+      "applicationUrl": "http://localhost:5001"
     }
   }
 }

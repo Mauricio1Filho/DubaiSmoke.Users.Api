@@ -1,5 +1,4 @@
 ﻿using DubaiSmoke.Users.Domain.Repositories;
-using DubaiSmoke.Users.Infrastructure.Repositories.Mongo;
 using DubaiSmoke.Users.Infrastructure.Repositories.MySql;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -1,10 +1,4 @@
-﻿using DubaiSmoke.Users.Domain.Aggregates;
-using DubaiSmoke.Users.Domain.Interfaces;
-using DubaiSmoke.Users.Domain.Repositories;
-using MongoDB.Driver;
-using System.Threading.Tasks;
-
-namespace DubaiSmoke.Users.Infrastructure.Repositories.Mongo
+﻿namespace DubaiSmoke.Users.Infrastructure.Repositories.Mongo
 {
     //public class UserAggregateRepository : IUserAggregateRepository
     //{
@@ -19,7 +13,7 @@ namespace DubaiSmoke.Users.Infrastructure.Repositories.Mongo
     //    {
     //        await _mongoDataBase.GetCollection<UserAggregate>(collectionName).InsertOneAsync(user);
     //        return string.Empty;
-           
+
     //    }     
     //}
 }

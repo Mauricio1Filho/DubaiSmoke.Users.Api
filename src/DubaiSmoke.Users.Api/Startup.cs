@@ -4,7 +4,6 @@ using DubaiSmoke.Users.CrossCutting.Configuration;
 using DubaiSmoke.Users.CrossCutting.DependencyInjection;
 using DubaiSmoke.Users.CrossCutting.FluentValidation;
 using DubaiSmoke.Users.Domain.Config;
-using DubaiSmoke.Users.Domain.Interfaces;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
@@ -12,8 +11,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using MongoDB.Driver;
 using System.Globalization;
 
 namespace DubaiSmoke.Users.Api
@@ -38,8 +35,8 @@ namespace DubaiSmoke.Users.Api
 
             services.AddMvc().AddFluentValidation(fv =>
             {
-               // fv.ImplicitlyValidateChildProperties = true;
-            });                   
+                // fv.ImplicitlyValidateChildProperties = true;
+            });
             services.AddMvc(options =>
             {
                 options.Filters.Add(typeof(ValidateModelStateAttribute));
@@ -56,20 +53,15 @@ namespace DubaiSmoke.Users.Api
             var mongoConfig = new MongoConfig();
             Configuration.Bind("MongoConfig", mongoConfig);
             services.AddSingleton(mongoConfig);
-            
+
             //services.AddTransient<IMongoConfigSettings, MongoConfigSettings>();
-          
+
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
             app.UseRouting();
 
             app.UseAuthorization();

@@ -1,7 +1,4 @@
-﻿using DubaiSmoke.Users.Domain.Aggregates;
-using System.Threading.Tasks;
-
-namespace DubaiSmoke.Users.Domain.Repositories
+﻿namespace DubaiSmoke.Users.Domain.Repositories
 {
     //public interface IUserAggregateRepository
     //{

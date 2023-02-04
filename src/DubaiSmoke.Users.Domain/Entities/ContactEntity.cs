@@ -1,5 +1,4 @@
-﻿using DubaiSmoke.Users.Domain.Entities;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DubaiSmoke.Users.Domain.Entities
 {
