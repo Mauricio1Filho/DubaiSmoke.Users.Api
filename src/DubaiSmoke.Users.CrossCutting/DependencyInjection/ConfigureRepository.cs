@@ -12,7 +12,6 @@ namespace DubaiSmoke.Users.CrossCutting.DependencyInjection
             serviceCollection.AddScoped<IAddressRepository, AddressRepository>();
             serviceCollection.AddScoped<IContactRepository, ContactRepository>();
             serviceCollection.AddScoped<IContactTypeRepository, ContactTypeRepository>();
-            //serviceCollection.AddScoped<IUserAggregateRepository, UserAggregateRepository>();
         }
     }
 }

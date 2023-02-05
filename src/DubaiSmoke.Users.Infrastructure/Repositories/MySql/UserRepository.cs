@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Dapper;
+﻿using Dapper;
 using DubaiSmoke.Users.Domain.Entities;
 using DubaiSmoke.Users.Domain.Repositories;
 using Microsoft.Extensions.Configuration;
@@ -11,17 +10,13 @@ using System.Threading.Tasks;
 namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
 {
     public class UserRepository : IUserRepository
-    {        
-        private readonly IMapper _mapper;
+    {
         private readonly IConfiguration Configuration;
         private string ConnectionString;
-        //private readonly IUserAggregateRepository _userAggregateRepository;
-        public UserRepository(IConfiguration configuration, IMapper mapper )
+        public UserRepository(IConfiguration configuration)
         {
             Configuration = configuration;
             ConnectionString = Configuration.GetConnectionString("DubaiSmokeDb");
-            //_userAggregateRepository = userAggregateRepository;
-            _mapper = mapper;
         }
 
         public async Task<bool> DeleteAsync(long id)
@@ -60,9 +55,7 @@ namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
                     item.HashCode = hash.ToString();
                     var response = await connection.QueryAsync<long>(sql, item);
                     id = response.FirstOrDefault();
-
-                    //  await _userAggregateRepository.InsertAsync(item);
-                }           
+                }
                 finally
                 {
                     connection.Close();
