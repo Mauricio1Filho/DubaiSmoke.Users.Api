@@ -3,11 +3,8 @@ using DubaiSmoke.Users.Application.ViewModels;
 using DubaiSmoke.Users.CrossCutting.Configuration;
 using DubaiSmoke.Users.CrossCutting.DependencyInjection;
 using DubaiSmoke.Users.CrossCutting.FluentValidation;
-using DubaiSmoke.Users.Domain.Config;
 using FluentValidation;
-using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,11 +29,7 @@ namespace DubaiSmoke.Users.Api
             services.ConfigureDependeciesServices();
             DbMapping.InitializeMapping();
             services.AddSwaggerGen();
-
-            services.AddMvc().AddFluentValidation(fv =>
-            {
-                // fv.ImplicitlyValidateChildProperties = true;
-            });
+            
             services.AddMvc(options =>
             {
                 options.Filters.Add(typeof(ValidateModelStateAttribute));
@@ -49,10 +42,7 @@ namespace DubaiSmoke.Users.Api
             services.AddTransient<IValidator<UserPayloadViewModel>, UserValidator>();
             services.AddTransient<IValidator<ContactPayloadViewModel>, ContactValidator>();
             services.AddTransient<IValidator<ContactTypePayloadViewModel>, ContactTypeValidator>();
-            services.AddTransient<IValidator<AddressPayloadViewModel>, AddressValidator>();
-            var mongoConfig = new MongoConfig();
-            Configuration.Bind("MongoConfig", mongoConfig);
-            services.AddSingleton(mongoConfig);
+            services.AddTransient<IValidator<AddressPayloadViewModel>, AddressValidator>();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
