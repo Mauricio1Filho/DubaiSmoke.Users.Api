@@ -113,7 +113,7 @@ namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
                            TXT_COMPLEMENT = @AddressComplement,
                            TXT_POSTAL_CODE = @PostalCode,
                            DT_UPDATED = @UpdatedAt
-                           WHERE ID_USER = @UserId;";
+                           WHERE ID_USERS = @UserId;";
             using (var connection = new MySqlConnection(ConnectionString))
             {
                 try
