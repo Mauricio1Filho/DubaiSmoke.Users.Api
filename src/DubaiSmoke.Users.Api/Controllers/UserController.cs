@@ -26,6 +26,14 @@ namespace DubaiSmoke.Users.Api.Controllers
             return Ok(await _userServiceApp.SelectAsync(id));
         }
 
+        [HttpPost("login")]
+        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> Login([FromBody] LoginPayloadViewModel payload)
+        {
+            return Ok(await _userServiceApp.LoginAsync(payload));
+        }
+
+
         [HttpPost("register")]
         [ProducesResponseType(typeof(long), (int)HttpStatusCode.Created)]
         [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]

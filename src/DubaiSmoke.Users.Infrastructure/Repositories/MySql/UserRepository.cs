@@ -64,6 +64,27 @@ namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
             }
         }
 
+        public async Task<bool> LoginAsync(UserEntity user)
+        {
+            string sql = @"SELECT HASH_CODE FROM users WHERE TXT_LOGIN = @email AND TXT_PWD = @password";
+            using (var connection = new MySqlConnection(ConnectionString))
+            {
+                try
+                {
+                    await connection.QuerySingleAsync<UserEntity>(sql, new { email = user.Login, password = user.Password });
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
         public async Task<UserEntity> SelectAsync(long id)
         {
             string sql = @"SELECT * FROM users WHERE id = @Id;";

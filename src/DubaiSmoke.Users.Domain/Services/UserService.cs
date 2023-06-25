@@ -33,5 +33,10 @@ namespace DubaiSmoke.Users.Domain.Services
         {
             return await _userRepository.UpdateAsync(user);
         }
+
+        public async Task<bool> LoginAsync(UserEntity user)
+        {
+            return await _userRepository.LoginAsync(user);
+        }
     }
 }

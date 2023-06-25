@@ -37,5 +37,16 @@ namespace DubaiSmoke.Users.Application.Services
         {
             return _mapper.Map<bool>(await _userService.DeleteAsync(id));
         }
+
+        public async Task<bool> LoginAsync(LoginPayloadViewModel payload)
+        {
+            var map = new UserEntity
+            {
+                Login = payload.email,
+                Password = payload.password
+            };
+
+            return await _userService.LoginAsync(map);
+        }
     }
 }
