@@ -1,60 +1,61 @@
 ﻿using DubaiSmoke.Users.Application.Interfaces;
 using DubaiSmoke.Users.Application.ViewModels;
-using DubaiSmoke.Users.CrossCutting.DTO;
-using Microsoft.AspNetCore.Http;
+using ErrorHandler.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Threading.Tasks;
+using ValidatorsHelper.Validators;
+using static ErrorHandler.Models.ErrorHandlerNotification;
 
 namespace DubaiSmoke.Users.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UserController : ControllerBase
+    public class UserController : BaseController
     {
         private readonly IUserServiceApp _userServiceApp;
 
-        public UserController(IUserServiceApp userServiceApp)
+        public UserController(IUserServiceApp userServiceApp, ErrorHandlerNotification notifications) : base (notifications)
         {
             _userServiceApp = userServiceApp;
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> SelectAsync(int id)
         {
-            return Ok(await _userServiceApp.SelectAsync(id));
+            return Response(await _userServiceApp.SelectAsync(id));
         }
 
         [HttpPost("login")]
-        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> Login([FromBody] LoginPayloadViewModel payload)
         {
-            return Ok(await _userServiceApp.LoginAsync(payload));
+            return Response(await _userServiceApp.LoginAsync(payload));
         }
 
 
         [HttpPost("register")]
         [ProducesResponseType(typeof(long), (int)HttpStatusCode.Created)]
-        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> InsertAsync([FromServices] IHttpContextAccessor context, [FromBody] UserPayloadViewModel payload)
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> InsertAsync([FromBody] UserPayloadViewModel payload)
         {
-            return Created(context.HttpContext.Request.Path, await _userServiceApp.InsertAsync(payload));
+            return Response(await _userServiceApp.InsertAsync(payload));
         }
 
         [HttpPut("update")]
         [ProducesResponseType(typeof(UserViewModel), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> UpdateAsync([FromBody] UserViewModel payload)
         {
-            return Ok(await _userServiceApp.UpdateAsync(payload));
+            return Response(await _userServiceApp.UpdateAsync(payload));
         }
 
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> DeleteAsync(long id)
         {
-            return Ok(await _userServiceApp.DeleteAsync(id));
+            return Response(await _userServiceApp.DeleteAsync(id));
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DubaiSmoke.Users.Domain.Entities;
 using DubaiSmoke.Users.Domain.Repositories;
 using DubaiSmoke.Users.Domain.Services;
+using ErrorHandler.Models;
 using Moq;
 using System;
 using System.Threading.Tasks;
@@ -12,10 +13,12 @@ namespace DubaiSmoke.Users.Test.Services
     {
         UserService _userService;
         Mock<IUserRepository> _userRepositoryMock;
+        ErrorHandlerNotification _notification;
         public UserServiceTest()
         {
+            _notification = new ErrorHandlerNotification();
             _userRepositoryMock = new Mock<IUserRepository>();
-            _userService = new UserService(_userRepositoryMock.Object);
+            _userService = new UserService(_userRepositoryMock.Object, _notification);
         }
 
         [Theory]
