@@ -1,60 +1,64 @@
 ﻿using DubaiSmoke.Users.Application.Interfaces;
 using DubaiSmoke.Users.Application.ViewModels;
-using DubaiSmoke.Users.CrossCutting.DTO;
-using Microsoft.AspNetCore.Http;
+using ErrorHandler.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using ValidatorsHelper.Validators;
+using static ErrorHandler.Models.ErrorHandlerNotification;
 
 namespace DubaiSmoke.Users.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ContactController : ControllerBase
+    public class ContactController : BaseController
     {
         private readonly IContactServiceApp _contactServiceApp;
 
-        public ContactController(IContactServiceApp contactServiceApp)
+        public ContactController(IContactServiceApp contactServiceApp, ErrorHandlerNotification notifications) : base(notifications)
         {
             _contactServiceApp = contactServiceApp;
         }
 
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(ContactViewModel), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> SelectAsync(long id)
         {
-            return Ok(await _contactServiceApp.SelectAsync(id));
+            return Response(await _contactServiceApp.SelectAsync(id));
         }
 
         [HttpGet("user/{userId}")]
         [ProducesResponseType(typeof(List<ContactViewModel>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> SelectByUserIdAsync(long userId)
         {
-            return Ok(await _contactServiceApp.SelectByUserIdAsync(userId));
+            return Response(await _contactServiceApp.SelectByUserIdAsync(userId));
         }
 
         [HttpPost("register")]
-        [ProducesResponseType(typeof(long), (int)HttpStatusCode.Created)]
-        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> InsertAsync([FromServices] IHttpContextAccessor context, [FromBody] ContactPayloadViewModel payload)
+        [ProducesResponseType(typeof(long), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> InsertAsync([FromBody] ContactPayloadViewModel payload)
         {
-            return Created(context.HttpContext.Request.Path, await _contactServiceApp.InsertAsync(payload));
+            return Response(await _contactServiceApp.InsertAsync(payload));
         }
 
         [HttpPut("update")]
         [ProducesResponseType(typeof(ContactViewModel), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> UpdateAsync([FromBody] ContactPayloadViewModel payload)
         {
-            return Ok(await _contactServiceApp.UpdateAsync(payload));
+            return Response(await _contactServiceApp.UpdateAsync(payload));
         }
 
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> DeleteAsync(long id)
         {
-            return Ok(await _contactServiceApp.DeleteAsync(id));
+            return Response(await _contactServiceApp.DeleteAsync(id));
         }
     }
 }

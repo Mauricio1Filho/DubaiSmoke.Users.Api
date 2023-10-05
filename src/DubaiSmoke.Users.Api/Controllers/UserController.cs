@@ -21,6 +21,7 @@ namespace DubaiSmoke.Users.Api.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(UserViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> SelectAsync(int id)
         {
@@ -28,6 +29,7 @@ namespace DubaiSmoke.Users.Api.Controllers
         }
 
         [HttpPost("login")]
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> Login([FromBody] LoginPayloadViewModel payload)
         {
@@ -36,7 +38,7 @@ namespace DubaiSmoke.Users.Api.Controllers
 
 
         [HttpPost("register")]
-        [ProducesResponseType(typeof(long), (int)HttpStatusCode.Created)]
+        [ProducesResponseType(typeof(long), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> InsertAsync([FromBody] UserPayloadViewModel payload)
         {
@@ -52,6 +54,7 @@ namespace DubaiSmoke.Users.Api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> DeleteAsync(long id)
         {
