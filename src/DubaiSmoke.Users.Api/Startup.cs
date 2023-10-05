@@ -14,22 +14,22 @@ namespace DubaiSmoke.Users.Api
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.ConfigureDependeciesRepository();
+            services.ConfigureDependeciesRepository(Configuration);
             services.ConfigureDependeciesServices();
             DbMapping.InitializeMapping();
             services.AddSwaggerGen();
-            
+
             services.AddMvc(options =>
             {
                 options.Filters.Add(typeof(ValidateModelStateAttribute));
@@ -42,7 +42,7 @@ namespace DubaiSmoke.Users.Api
             services.AddTransient<IValidator<UserPayloadViewModel>, UserValidator>();
             services.AddTransient<IValidator<ContactPayloadViewModel>, ContactValidator>();
             services.AddTransient<IValidator<ContactTypePayloadViewModel>, ContactTypeValidator>();
-            services.AddTransient<IValidator<AddressPayloadViewModel>, AddressValidator>();            
+            services.AddTransient<IValidator<AddressPayloadViewModel>, AddressValidator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

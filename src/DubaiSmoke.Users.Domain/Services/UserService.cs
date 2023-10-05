@@ -27,11 +27,10 @@ namespace DubaiSmoke.Users.Domain.Services
         public async Task<UserEntity> SelectAsync(long id)
         {
             var user = await _userRepository.SelectAsync(id);
-            if (user is null) 
-            {
+
+            if (user is null)
                 await _notifications.Handle(new ErrorDetail($"Usuário não encontrado: {id}", "001", string.Empty, HttpStatusCode.NotFound));
-                return null;
-            }
+
             return user;
         }
 

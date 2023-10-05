@@ -22,7 +22,7 @@ namespace DubaiSmoke.Users.CrossCutting.DependencyInjection
             serviceCollection.AddScoped<IContactTypeServiceApp, ContactTypeServiceApp>();
             serviceCollection.AddScoped<IContactTypeService, ContactTypeService>();
             serviceCollection.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
-            serviceCollection.AddScoped<ErrorHandlerNotification>();
+            serviceCollection.AddScoped<ErrorHandlerNotification>();            
             serviceCollection.AddAutoMapper(typeof(DomainToViewModelProfile), typeof(ViewModelToDomainProfile));
         }
     }

@@ -15,7 +15,7 @@ namespace DubaiSmoke.Users.Api.Controllers
     {
         private readonly IUserServiceApp _userServiceApp;
 
-        public UserController(IUserServiceApp userServiceApp, ErrorHandlerNotification notifications) : base (notifications)
+        public UserController(IUserServiceApp userServiceApp, ErrorHandlerNotification notifications) : base(notifications)
         {
             _userServiceApp = userServiceApp;
         }
