@@ -92,7 +92,7 @@ namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
             {
                 try
                 {
-                    return await connection.QuerySingleAsync<UserEntity>(sql, new { id = id });
+                    return await connection.QueryFirstOrDefaultAsync<UserEntity>(sql, new { id });
                 }
                 finally
                 {

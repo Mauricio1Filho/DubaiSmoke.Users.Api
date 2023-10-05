@@ -3,6 +3,7 @@ using DubaiSmoke.Users.Application.Services;
 using DubaiSmoke.Users.CrossCutting.AutoMapper.Profiles;
 using DubaiSmoke.Users.Domain.Interfaces;
 using DubaiSmoke.Users.Domain.Services;
+using ErrorHandler.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,6 +22,7 @@ namespace DubaiSmoke.Users.CrossCutting.DependencyInjection
             serviceCollection.AddScoped<IContactTypeServiceApp, ContactTypeServiceApp>();
             serviceCollection.AddScoped<IContactTypeService, ContactTypeService>();
             serviceCollection.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
+            serviceCollection.AddScoped<ErrorHandlerNotification>();
             serviceCollection.AddAutoMapper(typeof(DomainToViewModelProfile), typeof(ViewModelToDomainProfile));
         }
     }
