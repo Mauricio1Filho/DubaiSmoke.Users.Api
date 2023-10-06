@@ -1,4 +1,4 @@
-using DubaiSmoke.Users.Application.Validator;
+using DubaiSmoke.Users.Application.Validation;
 using DubaiSmoke.Users.Application.ViewModels;
 using DubaiSmoke.Users.CrossCutting.Configuration;
 using DubaiSmoke.Users.CrossCutting.DependencyInjection;

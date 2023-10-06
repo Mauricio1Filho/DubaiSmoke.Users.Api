@@ -11,6 +11,5 @@ namespace DubaiSmoke.Users.Domain.Interfaces
         Task<bool> DeleteAsync(long id);
         Task<ContactEntity> SelectAsync(long id);
         Task<List<ContactEntity>> SelectByUserIdAsync(long userId);
-
     }
 }

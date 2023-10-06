@@ -15,7 +15,7 @@ namespace DubaiSmoke.Users.CrossCutting.AutoMapper.Profiles
             CreateMap<ContactViewModel, ContactEntity>();
             CreateMap<ContactPayloadViewModel, ContactEntity>();
             CreateMap<ContactTypePayloadViewModel, ContactTypeEntity>();
-            CreateMap<ContactTypeViewModel, ContactTypeEntity>();            
+            CreateMap<ContactTypeViewModel, ContactTypeEntity>();
         }
     }
 }

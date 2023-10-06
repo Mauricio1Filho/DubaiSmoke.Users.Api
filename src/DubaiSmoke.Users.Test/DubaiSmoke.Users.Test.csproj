@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bogus" Version="34.0.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
     <PackageReference Include="Moq" Version="4.20.69" />
     <PackageReference Include="ReportGenerator" Version="5.1.25" />
@@ -26,12 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DubaiSmoke.Users.Api\DubaiSmoke.Users.Api.csproj" />
     <ProjectReference Include="..\DubaiSmoke.Users.Application\DubaiSmoke.Users.Application.csproj" />
     <ProjectReference Include="..\DubaiSmoke.Users.Domain\DubaiSmoke.Users.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Application\" />
   </ItemGroup>
 
 </Project>

@@ -13,7 +13,7 @@ namespace DubaiSmoke.Users.Domain.Entities
             get { return _createdAt == default ? DateTime.Now : _createdAt; }
             set { _createdAt = value; }
         }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
         public DateTime? DeletedAt { get; set; }
         public string HashCode { get; set; }        
     }

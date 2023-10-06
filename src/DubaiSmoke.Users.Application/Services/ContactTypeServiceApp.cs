@@ -35,7 +35,7 @@ namespace DubaiSmoke.Users.Application.Services
 
         public async Task<bool> DeleteAsync(long id)
         {
-            return _mapper.Map<bool>(await _contactTypeService.DeleteAsync(id));
+            return await _contactTypeService.DeleteAsync(id);
         }
     }
 }

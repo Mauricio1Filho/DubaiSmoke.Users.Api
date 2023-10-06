@@ -1,7 +1,7 @@
 ﻿using DubaiSmoke.Users.Application.ViewModels;
 using FluentValidation;
 
-namespace DubaiSmoke.Users.Application.Validator
+namespace DubaiSmoke.Users.Application.Validation
 {
     public class ContactTypeValidator : AbstractValidator<ContactTypePayloadViewModel>
     {
