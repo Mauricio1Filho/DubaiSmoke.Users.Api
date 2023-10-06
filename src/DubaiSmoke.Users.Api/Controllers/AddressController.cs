@@ -1,59 +1,65 @@
 ﻿using DubaiSmoke.Users.Application.Interfaces;
 using DubaiSmoke.Users.Application.ViewModels;
-using DubaiSmoke.Users.CrossCutting.DTO;
+using ErrorHandler.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using ValidatorsHelper.Validators;
+using static ErrorHandler.Models.ErrorHandlerNotification;
 
 namespace DubaiSmoke.Users.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AddressController : ControllerBase
+    public class AddressController : BaseController
     {
         private readonly IAddressServiceApp _addressServiceApp;
 
-        public AddressController(IAddressServiceApp addressServiceApp)
+        public AddressController(IAddressServiceApp addressServiceApp, ErrorHandlerNotification notifications) : base(notifications)
         {
             _addressServiceApp = addressServiceApp;
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(AddressViewModel), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> SelectAsync(int id)
         {
-            return Ok(await _addressServiceApp.SelectAsync(id));
+            return Response(await _addressServiceApp.SelectAsync(id));
         }
 
         [HttpGet("user/{userId}")]
-        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(List<AddressViewModel>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> GetAddressByUserId(int userId)
         {
-            return Ok(await _addressServiceApp.GetAddressByUserId(userId));
+            return Response(await _addressServiceApp.GetAddressByUserId(userId));
         }
 
         [HttpPost("register")]
-        [ProducesResponseType(typeof(long), (int)HttpStatusCode.Created)]
-        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> InsertAsync([FromServices] IHttpContextAccessor context, [FromBody] AddressPayloadViewModel payload)
+        [ProducesResponseType(typeof(long), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> InsertAsync([FromBody] AddressPayloadViewModel payload)
         {
-            return Created(context.HttpContext.Request.Path, await _addressServiceApp.InsertAsync(payload));
+            return Response(await _addressServiceApp.InsertAsync(payload));
         }
 
         [HttpPut("update")]
         [ProducesResponseType(typeof(AddressViewModel), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> UpdateAsync([FromBody] AddressPayloadViewModel payload)
         {
-            return Ok(await _addressServiceApp.UpdateAsync(payload));
+            return Response(await _addressServiceApp.UpdateAsync(payload));
         }
 
         [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(BadRequestResponse), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> DeleteAsync(long id)
         {
-            return Ok(await _addressServiceApp.DeleteAsync(id));
+            return Response(await _addressServiceApp.DeleteAsync(id));
         }
     }
 }
