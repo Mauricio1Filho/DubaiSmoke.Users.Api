@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using DubaiSmoke.Users.Api.Controllers;
+﻿using DubaiSmoke.Users.Api.Controllers;
 using DubaiSmoke.Users.Application.Interfaces;
 using DubaiSmoke.Users.Application.ViewModels;
 using DubaiSmoke.Users.Test.Mocks;

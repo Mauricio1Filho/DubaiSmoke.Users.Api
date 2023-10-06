@@ -4,7 +4,6 @@ using DubaiSmoke.Users.Domain.Services;
 using DubaiSmoke.Users.Test.Mocks;
 using Moq;
 using System;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace DubaiSmoke.Users.Test.Domain.Services

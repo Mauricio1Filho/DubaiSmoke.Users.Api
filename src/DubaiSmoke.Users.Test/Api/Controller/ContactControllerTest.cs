@@ -1,16 +1,11 @@
-﻿using AutoMapper;
-using DubaiSmoke.Users.Api.Controllers;
+﻿using DubaiSmoke.Users.Api.Controllers;
 using DubaiSmoke.Users.Application.Interfaces;
-using DubaiSmoke.Users.Application.Services;
 using DubaiSmoke.Users.Application.ViewModels;
-using DubaiSmoke.Users.Domain.Entities;
-using DubaiSmoke.Users.Domain.Interfaces;
 using DubaiSmoke.Users.Test.Mocks;
 using ErrorHandler.Models;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System;
-using System.Collections.Generic;
 using Xunit;
 
 namespace DubaiSmoke.Users.Test.Api.Controller
