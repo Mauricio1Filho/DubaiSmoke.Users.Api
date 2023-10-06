@@ -52,7 +52,6 @@ namespace DubaiSmoke.Users.Test.Application.Services
         {
             Assert.True(await _mockServiceApp.DeleteAsync(1));
         }
-
         #endregion
 
         #region Error
