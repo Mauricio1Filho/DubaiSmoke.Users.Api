@@ -1,9 +1,13 @@
 ﻿using AutoMapper;
+using DubaiSmoke.Users.Api.Controllers;
+using DubaiSmoke.Users.Application.Interfaces;
 using DubaiSmoke.Users.Application.Services;
 using DubaiSmoke.Users.Application.ViewModels;
 using DubaiSmoke.Users.Domain.Entities;
 using DubaiSmoke.Users.Domain.Interfaces;
 using DubaiSmoke.Users.Test.Mocks;
+using ErrorHandler.Models;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -13,53 +17,51 @@ namespace DubaiSmoke.Users.Test.Api.Controller
 {
     public class ContactControllerTest
     {
-        readonly ContactServiceApp _mockServiceApp;
-        readonly Mock<IContactService> _contactService;
-        readonly Mock<IMapper> _mapper;
+        readonly ContactController _controller;
+        readonly Mock<IContactServiceApp> _contactServiceApp;
+        readonly ErrorHandlerNotification _notifications;
         public ContactControllerTest()
         {
-            _contactService = new Mock<IContactService>();
-            _mapper = new Mock<IMapper>();
-            _mockServiceApp = new ContactServiceApp(_contactService.Object, _mapper.Object);
+            _notifications = new ErrorHandlerNotification();
+            _contactServiceApp = new Mock<IContactServiceApp>();
+            _controller = new ContactController(_contactServiceApp.Object, _notifications);
 
-            _contactService.Setup(x => x.InsertAsync(It.IsAny<ContactEntity>())).ReturnsAsync(1);
-            _contactService.Setup(x => x.SelectAsync(It.IsAny<long>())).ReturnsAsync(ContactMocks.GetContactEntity());
-            _contactService.Setup(x => x.UpdateAsync(It.IsAny<ContactEntity>())).ReturnsAsync(ContactMocks.GetContactEntity());
-            _contactService.Setup(x => x.DeleteAsync(It.IsAny<long>())).ReturnsAsync(true);
-            _contactService.Setup(x => x.SelectByUserIdAsync(It.IsAny<long>())).ReturnsAsync(ContactMocks.GetContactEntitylList());
-            _mapper.Setup(x => x.Map<ContactViewModel>(It.IsAny<ContactEntity>())).Returns(ContactMocks.GetContactViewModel());
-            _mapper.Setup(x => x.Map<List<ContactViewModel>>(It.IsAny<List<ContactEntity>>())).Returns(ContactMocks.GetContactViewModelList());
+            _contactServiceApp.Setup(x => x.InsertAsync(It.IsAny<ContactPayloadViewModel>())).ReturnsAsync(1);
+            _contactServiceApp.Setup(x => x.SelectAsync(It.IsAny<long>())).ReturnsAsync(ContactMocks.GetContactViewModel());
+            _contactServiceApp.Setup(x => x.UpdateAsync(It.IsAny<ContactPayloadViewModel>())).ReturnsAsync(ContactMocks.GetContactViewModel());
+            _contactServiceApp.Setup(x => x.DeleteAsync(It.IsAny<long>())).ReturnsAsync(true);
+            _contactServiceApp.Setup(x => x.SelectByUserIdAsync(It.IsAny<long>())).ReturnsAsync(ContactMocks.GetContactViewModelList());
         }
 
         #region Success
         [Fact]
         public async void InsertContactSuccess()
         {
-            Assert.True(await _mockServiceApp.InsertAsync(ContactMocks.GetContactPayloadViewModel()) > 0);
+            Assert.IsType<OkObjectResult>(await _controller.InsertAsync(ContactMocks.GetContactPayloadViewModel()));
         }
 
         [Fact]
         public async void SelectContactSuccess()
         {
-            Assert.NotNull(await _mockServiceApp.SelectAsync(1));
+            Assert.IsType<OkObjectResult>(await _controller.SelectAsync(1));
         }
 
         [Fact]
         public async void UpdateContactSuccess()
         {
-            Assert.NotNull(await _mockServiceApp.UpdateAsync(ContactMocks.GetContactPayloadViewModel()));
+            Assert.IsType<OkObjectResult>(await _controller.UpdateAsync(ContactMocks.GetContactPayloadViewModel()));
         }
 
         [Fact]
         public async void DeleteContactSuccess()
         {
-            Assert.True(await _mockServiceApp.DeleteAsync(1));
+            Assert.IsType<OkObjectResult>(await _controller.DeleteAsync(1));
         }
 
         [Fact]
         public async void SelectByUserIdSuccess()
         {
-            Assert.NotNull(await _mockServiceApp.SelectByUserIdAsync(1));
+            Assert.IsType<OkObjectResult>(await _controller.SelectByUserIdAsync(1));
         }
 
         #endregion
@@ -68,37 +70,36 @@ namespace DubaiSmoke.Users.Test.Api.Controller
         [Fact]
         public async void InsertContactError()
         {
-            _contactService.Setup(x => x.InsertAsync(It.IsAny<ContactEntity>())).ThrowsAsync(new Exception());
-            await Assert.ThrowsAnyAsync<Exception>(async () => await _mockServiceApp.InsertAsync(ContactMocks.GetContactPayloadViewModel()));
+            _contactServiceApp.Setup(x => x.InsertAsync(It.IsAny<ContactPayloadViewModel>())).ThrowsAsync(new Exception());
+            await Assert.ThrowsAnyAsync<Exception>(async () => await _controller.InsertAsync(ContactMocks.GetContactPayloadViewModel()));
         }
 
         [Fact]
         public async void SelectContactError()
         {
-            _contactService.Setup(x => x.SelectAsync(It.IsAny<long>())).ThrowsAsync(new Exception());
-            await Assert.ThrowsAnyAsync<Exception>(async () => await _mockServiceApp.SelectAsync(0));
+            _contactServiceApp.Setup(x => x.SelectAsync(It.IsAny<long>())).ThrowsAsync(new Exception());
+            await Assert.ThrowsAnyAsync<Exception>(async () => await _controller.SelectAsync(0));
         }
 
         [Fact]
         public async void UpdateContactError()
         {
-            _contactService.Setup(x => x.UpdateAsync(It.IsAny<ContactEntity>())).ThrowsAsync(new Exception());
-            await Assert.ThrowsAnyAsync<Exception>(async () => await _mockServiceApp.UpdateAsync(ContactMocks.GetContactPayloadViewModel()));
+            _contactServiceApp.Setup(x => x.UpdateAsync(It.IsAny<ContactPayloadViewModel>())).ThrowsAsync(new Exception());
+            await Assert.ThrowsAnyAsync<Exception>(async () => await _controller.UpdateAsync(ContactMocks.GetContactPayloadViewModel()));
         }
 
         [Fact]
         public async void DeleteContactError()
         {
-            _contactService.Setup(x => x.DeleteAsync(It.IsAny<long>())).ReturnsAsync(false);
-            Assert.False(await _mockServiceApp.DeleteAsync(0));
+            _contactServiceApp.Setup(x => x.DeleteAsync(It.IsAny<long>())).ReturnsAsync(false);
+            Assert.IsType<OkObjectResult>(await _controller.DeleteAsync(0));
         }
 
         [Fact]
         public async void SelectByUserIdError()
         {
-            _mapper.Setup(x => x.Map<List<ContactViewModel>>(It.IsAny<List<ContactEntity>>()));
-            _contactService.Setup(x => x.SelectByUserIdAsync(It.IsAny<long>()));
-            Assert.Null(await _mockServiceApp.SelectByUserIdAsync(1));
+            _contactServiceApp.Setup(x => x.SelectByUserIdAsync(It.IsAny<long>()));
+            Assert.IsType<OkObjectResult>(await _controller.SelectByUserIdAsync(1));
         }
         #endregion
     }
