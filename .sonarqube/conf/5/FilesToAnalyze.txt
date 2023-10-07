@@ -1,0 +1,18 @@
+﻿/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Api/Controller/AddressControllerTest.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Api/Controller/ContactControllerTest.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Api/Controller/ContactTypeControllerTest.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Api/Controller/UserControllerTest.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Application/Services/AddressServiceAppTest.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Application/Services/ContactServiceAppTest.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Application/Services/ContactTypeServiceAppTest.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Application/Services/UserServiceAppTest.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Domain/Services/AddressServiceTest.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Domain/Services/ContactServiceTest.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Domain/Services/ContactTypeServiceTest .cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Domain/Services/UserServiceTest.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Mocks/AddressMocks.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Mocks/ContactMocks.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Mocks/ContactTypeMocks.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Mocks/UserMocks.cs
+/home/nino/.nuget/packages/microsoft.net.test.sdk/17.7.2/build/netcoreapp3.1/Microsoft.NET.Test.Sdk.Program.cs
+/home/nino/.nuget/packages/xunit.runner.visualstudio/2.5.1/build/net6.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>DubaiSmoke.Users.CrossCutting</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>f4833f87-0e1f-4bdc-95c1-ec6f86722c16</ProjectGuid>
+  <FullPath>/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/DubaiSmoke.Users.CrossCutting.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults>
+    <AnalysisResult Id="FilesToAnalyze" Location="/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/.sonarqube/conf/3/FilesToAnalyze.txt" />
+  </AnalysisResults>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePaths">/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/.sonarqube/out/3/Issues.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPaths">/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/.sonarqube/out/3</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+  <TargetFramework>net6.0</TargetFramework>
+</ProjectInfo>

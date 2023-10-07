@@ -1,0 +1,5 @@
+﻿/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Infrastructure/Repositories/MySql/AddressRepository.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Infrastructure/Repositories/MySql/ContactRepository.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Infrastructure/Repositories/MySql/ContactTypeRepository.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Infrastructure/Repositories/MySql/DapperExtensions.cs
+/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Infrastructure/Repositories/MySql/UserRepository.cs
