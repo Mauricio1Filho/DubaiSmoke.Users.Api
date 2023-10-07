@@ -55,7 +55,7 @@ namespace DubaiSmoke.Users.Test.Mocks
             };
         }
 
-        public static List<AddressEntity> GetAddressEntitylList()
+        public static List<AddressEntity> GetAddressEntityList()
         {
             return new List<AddressEntity>
             {
