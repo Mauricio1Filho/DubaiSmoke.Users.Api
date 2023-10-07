@@ -20,9 +20,9 @@
               "resultFile": {
                 "uri": "file:///home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/FluentValidation/ValidateModelStateAttribute.cs",
                 "region": {
-                  "startLine": 24,
+                  "startLine": 26,
                   "startColumn": 50,
-                  "endLine": 24,
+                  "endLine": 26,
                   "endColumn": 67
                 }
               }

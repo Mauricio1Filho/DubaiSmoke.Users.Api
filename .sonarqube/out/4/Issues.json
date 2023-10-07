@@ -62,9 +62,9 @@
               "resultFile": {
                 "uri": "file:///home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Api/Program.cs",
                 "region": {
-                  "startLine": 7,
+                  "startLine": 9,
                   "startColumn": 18,
-                  "endLine": 7,
+                  "endLine": 9,
                   "endColumn": 25
                 }
               }
