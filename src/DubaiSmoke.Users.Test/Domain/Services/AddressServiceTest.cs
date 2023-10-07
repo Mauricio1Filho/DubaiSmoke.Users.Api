@@ -22,6 +22,7 @@ namespace DubaiSmoke.Users.Test.Domain.Services
             _addressRepositoryMock.Setup(s => s.SelectAsync(It.IsAny<long>())).ReturnsAsync(AddressMocks.GetAddressEntity());
             _addressRepositoryMock.Setup(s => s.InsertAsync(It.IsAny<AddressEntity>())).ReturnsAsync(1);
             _addressRepositoryMock.Setup(s => s.UpdateAsync(It.IsAny<AddressEntity>())).ReturnsAsync(AddressMocks.GetAddressEntity());
+            _addressRepositoryMock.Setup(s => s.GetAddressByUserId(It.IsAny<long>())).ReturnsAsync(AddressMocks.GetAddressEntityList());
         }
 
         #region Success
@@ -41,6 +42,12 @@ namespace DubaiSmoke.Users.Test.Domain.Services
         public async void InsertAddressSuccess()
         {
             Assert.True(await _addressService.InsertAsync(AddressMocks.GetAddressEntity()) > 0);
+        }
+
+        [Fact]
+        public async void GetAddressByUserIdSuccess()
+        {
+            Assert.NotNull(await _addressService.GetAddressByUserId(1));
         }
 
         [Fact]
