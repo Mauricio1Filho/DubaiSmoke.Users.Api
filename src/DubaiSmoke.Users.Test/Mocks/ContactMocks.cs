@@ -47,7 +47,7 @@ namespace DubaiSmoke.Users.Test.Mocks
             };
         }
 
-        public static List<ContactEntity> GetContactEntitylList()
+        public static List<ContactEntity> GetContactEntityList()
         {
             return new List<ContactEntity>
             {

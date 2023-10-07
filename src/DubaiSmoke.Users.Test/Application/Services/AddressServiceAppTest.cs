@@ -6,6 +6,7 @@ using DubaiSmoke.Users.Domain.Interfaces;
 using DubaiSmoke.Users.Test.Mocks;
 using Moq;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace DubaiSmoke.Users.Test.Application.Services
@@ -25,7 +26,9 @@ namespace DubaiSmoke.Users.Test.Application.Services
             _addressService.Setup(x => x.SelectAsync(It.IsAny<long>())).ReturnsAsync(AddressMocks.GetAddressEntity());
             _addressService.Setup(x => x.UpdateAsync(It.IsAny<AddressEntity>())).ReturnsAsync(AddressMocks.GetAddressEntity());
             _addressService.Setup(x => x.DeleteAsync(It.IsAny<long>())).ReturnsAsync(true);
+            _addressService.Setup(x => x.GetAddressByUserId(It.IsAny<long>())).ReturnsAsync(AddressMocks.GetAddressEntitylList());
             _mapper.Setup(x => x.Map<AddressViewModel>(It.IsAny<AddressEntity>())).Returns(AddressMocks.GetAddressViewModel());
+            _mapper.Setup(x => x.Map<List<AddressViewModel>>(It.IsAny<List<AddressEntity>>())).Returns(AddressMocks.GetAddressViewModelList());
         }
 
         #region Success
@@ -33,6 +36,12 @@ namespace DubaiSmoke.Users.Test.Application.Services
         public async void InsertAddressSuccess()
         {
             Assert.True(await _mockServiceApp.InsertAsync(AddressMocks.GetAddressPayloadViewModel()) > 0);
+        }
+
+        [Fact]
+        public async void GetAddressByUserIdSuccess()
+        {
+            Assert.NotNull(await _mockServiceApp.GetAddressByUserId(1));
         }
 
         [Fact]
@@ -60,6 +69,14 @@ namespace DubaiSmoke.Users.Test.Application.Services
         {
             _addressService.Setup(x => x.InsertAsync(It.IsAny<AddressEntity>())).ThrowsAsync(new Exception());
             await Assert.ThrowsAnyAsync<Exception>(async () => await _mockServiceApp.InsertAsync(AddressMocks.GetAddressPayloadViewModel()));
+        }
+
+        [Fact]
+        public async void GetAddressByUserIdError()
+        {
+            _mapper.Setup(x => x.Map<List<AddressViewModel>>(It.IsAny<List<AddressEntity>>()));
+            _addressService.Setup(x => x.GetAddressByUserId(It.IsAny<long>()));
+            Assert.Null(await _mockServiceApp.GetAddressByUserId(1));
         }
 
         [Fact]

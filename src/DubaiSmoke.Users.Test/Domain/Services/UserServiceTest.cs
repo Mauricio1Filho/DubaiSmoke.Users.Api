@@ -65,13 +65,14 @@ namespace DubaiSmoke.Users.Test.Domain.Services
         {
             _userRepositoryMock.Setup(x => x.InsertAsync(It.IsAny<UserEntity>())).ThrowsAsync(new Exception());
             await Assert.ThrowsAnyAsync<Exception>(async () => await _userService.InsertAsync(UserMocks.GetUserEntity()));
-        }
+        }        
 
         [Fact]
-        public async void SelectUserError()
+        public async void SelectUserNull()
         {
-            _userRepositoryMock.Setup(x => x.SelectAsync(It.IsAny<long>())).ThrowsAsync(new Exception());
-            await Assert.ThrowsAnyAsync<Exception>(async () => await _userService.SelectAsync(0));
+            _userRepositoryMock.Setup(x => x.SelectAsync(It.IsAny<long>()));
+            Assert.Null(await _userService.SelectAsync(0));
+            Assert.True(_notification.HasNotifications());
         }
 
         [Fact]

@@ -25,6 +25,7 @@ namespace DubaiSmoke.Users.Test.Api.Controller
             _addressServiceApp.Setup(x => x.SelectAsync(It.IsAny<long>())).ReturnsAsync(AddressMocks.GetAddressViewModel());
             _addressServiceApp.Setup(x => x.UpdateAsync(It.IsAny<AddressPayloadViewModel>())).ReturnsAsync(AddressMocks.GetAddressViewModel());
             _addressServiceApp.Setup(x => x.DeleteAsync(It.IsAny<long>())).ReturnsAsync(true);
+            _addressServiceApp.Setup(x => x.GetAddressByUserId(It.IsAny<long>())).ReturnsAsync(AddressMocks.GetAddressViewModelList());
         }
 
         #region Success
@@ -32,6 +33,12 @@ namespace DubaiSmoke.Users.Test.Api.Controller
         public async void InsertAddressSuccess()
         {
             Assert.IsType<OkObjectResult>(await _controller.InsertAsync(AddressMocks.GetAddressPayloadViewModel()));
+        }
+
+        [Fact]
+        public async void GetAddressByUserIdSuccess()
+        {
+            Assert.IsType<OkObjectResult>(await _controller.GetAddressByUserId(1));
         }
 
         [Fact]
@@ -59,6 +66,13 @@ namespace DubaiSmoke.Users.Test.Api.Controller
         {
             _addressServiceApp.Setup(x => x.InsertAsync(It.IsAny<AddressPayloadViewModel>())).ThrowsAsync(new Exception());
             await Assert.ThrowsAnyAsync<Exception>(async () => await _controller.InsertAsync(AddressMocks.GetAddressPayloadViewModel()));
+        }
+
+        [Fact]
+        public async void GetAddressByUserIdError()
+        {
+            _addressServiceApp.Setup(x => x.GetAddressByUserId(It.IsAny<long>())).ThrowsAsync(new Exception());
+            await Assert.ThrowsAnyAsync<Exception>(async () => await _controller.GetAddressByUserId(1));
         }
 
         [Fact]

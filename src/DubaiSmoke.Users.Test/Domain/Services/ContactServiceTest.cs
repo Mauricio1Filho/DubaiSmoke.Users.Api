@@ -22,6 +22,7 @@ namespace DubaiSmoke.Users.Test.Domain.Services
             _contactRepositoryMock.Setup(s => s.SelectAsync(It.IsAny<long>())).ReturnsAsync(ContactMocks.GetContactEntity());
             _contactRepositoryMock.Setup(s => s.InsertAsync(It.IsAny<ContactEntity>())).ReturnsAsync(1);
             _contactRepositoryMock.Setup(s => s.UpdateAsync(It.IsAny<ContactEntity>())).ReturnsAsync(ContactMocks.GetContactEntity());
+            _contactRepositoryMock.Setup(s => s.SelectByUserIdAsync(It.IsAny<long>())).ReturnsAsync(ContactMocks.GetContactEntityList());
         }
 
         #region Success
@@ -40,13 +41,19 @@ namespace DubaiSmoke.Users.Test.Domain.Services
         [Fact]
         public async void InsertContactSuccess()
         {
-            Assert.True( await _contactService.InsertAsync(ContactMocks.GetContactEntity()) > 0);
+            Assert.True(await _contactService.InsertAsync(ContactMocks.GetContactEntity()) > 0);
         }
 
         [Fact]
         public async void UpdateContactSuccess()
         {
             Assert.NotNull(await _contactService.UpdateAsync(ContactMocks.GetContactEntity()));
+        }
+
+        [Fact]
+        public async void SelectByUserIdSuccess()
+        {
+            Assert.NotNull(await _contactService.SelectByUserIdAsync(1));
         }
         #endregion
 
@@ -77,6 +84,13 @@ namespace DubaiSmoke.Users.Test.Domain.Services
         {
             _contactRepositoryMock.Setup(x => x.DeleteAsync(It.IsAny<long>())).ReturnsAsync(false);
             Assert.False(await _contactService.DeleteAsync(0));
+        }
+
+        [Fact]
+        public async void SelectByUserIdContactError()
+        {
+            _contactRepositoryMock.Setup(x => x.SelectByUserIdAsync(It.IsAny<long>()));
+            Assert.Null(await _contactService.SelectByUserIdAsync(1));
         }
         #endregion
     }
