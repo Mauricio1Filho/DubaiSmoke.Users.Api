@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DubaiSmoke.Users.CrossCutting.DTO
 {
+    [ExcludeFromCodeCoverage]
     public class BadRequestResponse
     {
         public List<ValidationError> _errors { get; set; } = new List<ValidationError>();

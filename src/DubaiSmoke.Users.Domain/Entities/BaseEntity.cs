@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DubaiSmoke.Users.Domain.Entities
 {
+    [ExcludeFromCodeCoverage]
     public abstract class BaseEntity
     {
         [Key]

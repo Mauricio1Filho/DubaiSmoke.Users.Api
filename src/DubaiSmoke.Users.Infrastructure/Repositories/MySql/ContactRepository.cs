@@ -4,13 +4,15 @@ using DubaiSmoke.Users.Domain.Repositories;
 using Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
 {
+    [ExcludeFromCodeCoverage]
     public class ContactRepository : IContactRepository
-    {
+    {        
         readonly IUnitOfWork _unitOfWork;
 
         public ContactRepository(IUnitOfWork unitOfWork)

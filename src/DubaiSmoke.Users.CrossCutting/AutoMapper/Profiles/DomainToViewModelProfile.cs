@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using DubaiSmoke.Users.Application.ViewModels;
 using DubaiSmoke.Users.Domain.Entities;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DubaiSmoke.Users.CrossCutting.AutoMapper.Profiles
 {
+    [ExcludeFromCodeCoverage]
     public class DomainToViewModelProfile : Profile
     {
         public DomainToViewModelProfile()

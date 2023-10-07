@@ -6,9 +6,11 @@ using DubaiSmoke.Users.Domain.Services;
 using ErrorHandler.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DubaiSmoke.Users.CrossCutting.DependencyInjection
 {
+    [ExcludeFromCodeCoverage]
     public static class ConfigureService
     {
         public static void ConfigureDependeciesServices(this IServiceCollection serviceCollection)

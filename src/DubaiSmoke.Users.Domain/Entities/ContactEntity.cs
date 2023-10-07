@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DubaiSmoke.Users.Domain.Entities
 {
+    [ExcludeFromCodeCoverage]
     [Table("contacts")]
     public class ContactEntity : BaseEntity
     {

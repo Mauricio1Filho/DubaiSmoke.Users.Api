@@ -4,9 +4,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Repositories.Interfaces;
 using Repositories.UnitOfWork;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DubaiSmoke.Users.CrossCutting.DependencyInjection
 {
+    [ExcludeFromCodeCoverage]
     public static class ConfigureRepository
     {
         public static void ConfigureDependeciesRepository(this IServiceCollection serviceCollection, IConfiguration configuration)

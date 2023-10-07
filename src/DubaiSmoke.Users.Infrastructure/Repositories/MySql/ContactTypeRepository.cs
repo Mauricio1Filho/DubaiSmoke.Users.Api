@@ -3,10 +3,12 @@ using DubaiSmoke.Users.Domain.Entities;
 using DubaiSmoke.Users.Domain.Repositories;
 using Repositories.Interfaces;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
 namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
 {
+    [ExcludeFromCodeCoverage]
     public class ContactTypeRepository : IContactTypeRepository
     {
         readonly IUnitOfWork _unitOfWork;

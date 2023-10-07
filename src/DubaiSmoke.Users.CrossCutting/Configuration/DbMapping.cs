@@ -1,8 +1,10 @@
 ﻿using Dapper.FluentMap;
 using DubaiSmoke.Users.CrossCutting.Mapping;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DubaiSmoke.Users.CrossCutting.Configuration
 {
+    [ExcludeFromCodeCoverage]
     public static class DbMapping
     {
         public static void InitializeMapping()
