@@ -1,0 +1,20 @@
+x
+o/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Api/Controller/AddressControllerTest.csutf-8x
+o/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Api/Controller/ContactControllerTest.csutf-8|
+s/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Api/Controller/ContactTypeControllerTest.csutf-8u
+l/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Api/Controller/UserControllerTest.csutf-8~
+u/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Application/Services/AddressServiceAppTest.csutf-8~
+u/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Application/Services/ContactServiceAppTest.csutf-8‚
+y/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Application/Services/ContactTypeServiceAppTest.csutf-8{
+r/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Application/Services/UserServiceAppTest.csutf-8v
+m/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Domain/Services/AddressServiceTest.csutf-8v
+m/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Domain/Services/ContactServiceTest.csutf-8{
+r/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Domain/Services/ContactTypeServiceTest .csutf-8s
+j/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Domain/Services/UserServiceTest.csutf-8f
+]/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Mocks/AddressMocks.csutf-8f
+]/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Mocks/ContactMocks.csutf-8j
+a/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Mocks/ContactTypeMocks.csutf-8c
+Z/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/Mocks/UserMocks.csutf-8y
+n/home/nino/.nuget/packages/microsoft.net.test.sdk/17.7.2/build/netcoreapp3.1/Microsoft.NET.Test.Sdk.Program.csutf-8“
+‡/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.csutf-8‰
+~/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Test/obj/Debug/net6.0/DubaiSmoke.Users.Test.AssemblyInfo.csutf-8
