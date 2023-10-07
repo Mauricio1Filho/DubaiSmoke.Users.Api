@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DubaiSmoke.Users.CrossCutting.FluentValidation
 {
+    [ExcludeFromCodeCoverage]
     public class ValidateModelStateAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)

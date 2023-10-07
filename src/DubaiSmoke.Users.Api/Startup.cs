@@ -8,10 +8,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace DubaiSmoke.Users.Api
 {
+    [ExcludeFromCodeCoverage]
     public class Startup
     {
         public IConfiguration Configuration { get; }

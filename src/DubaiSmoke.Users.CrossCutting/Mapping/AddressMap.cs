@@ -1,10 +1,12 @@
 ﻿using Dapper.FluentMap.Mapping;
 using DubaiSmoke.Users.Domain.Entities;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DubaiSmoke.Users.CrossCutting.Mapping
 {
     public class AddressMap : EntityMap<AddressEntity>
     {
+        [ExcludeFromCodeCoverage]
         public AddressMap()
         {
             Map(m => m.Id).ToColumn("ID");

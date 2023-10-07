@@ -1,8 +1,10 @@
 ﻿using Dapper.FluentMap.Mapping;
 using DubaiSmoke.Users.Domain.Entities;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DubaiSmoke.Users.CrossCutting.Mapping
 {
+    [ExcludeFromCodeCoverage]
     public class UserMap : EntityMap<UserEntity>
     {
         public UserMap()

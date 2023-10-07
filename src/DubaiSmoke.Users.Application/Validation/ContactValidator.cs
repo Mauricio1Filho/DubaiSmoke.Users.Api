@@ -1,8 +1,10 @@
 ﻿using DubaiSmoke.Users.Application.ViewModels;
 using FluentValidation;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DubaiSmoke.Users.Application.Validation
 {
+    [ExcludeFromCodeCoverage]
     public class ContactValidator : AbstractValidator<ContactPayloadViewModel>
     {
         public ContactValidator()
