@@ -1,6 +1,8 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /build
 
+RUN dotnet nuget add source http://192.168.15.140:4000/v3/index.json -n NugetServer
+
 COPY . /build
 RUN dotnet restore
 RUN dotnet publish src/DubaiSmoke.Users.Api/DubaiSmoke.Users.Api.csproj -c RELEASE --self-contained  -r linux-x64 -o src/out
