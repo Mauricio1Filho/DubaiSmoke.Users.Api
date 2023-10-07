@@ -3,8 +3,7 @@
 /home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/AutoMapper/Profiles/ViewModelToDomainProfile.csutf-8s
 j/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/Configuration/DbMapping.csutf-8ƒ
 z/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/DependencyInjection/ConfigureRepository.csutf-8€
-w/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/DependencyInjection/ConfigureService.csutf-8s
-j/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/DTO/BadResquestResponse.csutf-8ˆ
+w/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/DependencyInjection/ConfigureService.csutf-8ˆ
 /home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/FluentValidation/ValidateModelStateAttribute.csutf-8n
 e/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/Mapping/AddressMap.csutf-8n
 e/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/Mapping/ContactMap.csutf-8r

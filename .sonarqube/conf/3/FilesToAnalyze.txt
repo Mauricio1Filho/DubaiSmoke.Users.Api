@@ -3,7 +3,6 @@
 /home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/Configuration/DbMapping.cs
 /home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/DependencyInjection/ConfigureRepository.cs
 /home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/DependencyInjection/ConfigureService.cs
-/home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/DTO/BadResquestResponse.cs
 /home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/FluentValidation/ValidateModelStateAttribute.cs
 /home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/Mapping/AddressMap.cs
 /home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.CrossCutting/Mapping/ContactMap.cs
