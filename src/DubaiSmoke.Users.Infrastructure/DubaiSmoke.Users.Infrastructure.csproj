@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <NoWarn>NU1803</NoWarn>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <NoWarn>NU1803</NoWarn>    
+    <NoWarn>NU1605</NoWarn>
   </PropertyGroup>
   
   <ItemGroup>

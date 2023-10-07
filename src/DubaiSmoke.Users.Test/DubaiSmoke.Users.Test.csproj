@@ -1,9 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<NoWarn>NU1803</NoWarn>
+		<TargetFramework>net6.0</TargetFramework>		
 		<IsPackable>false</IsPackable>
+		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    	<NoWarn>NU1803</NoWarn>    
+    	<NoWarn>NU1605</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
