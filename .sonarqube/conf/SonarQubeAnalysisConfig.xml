@@ -126,7 +126,7 @@
   </ServerSettings>
   <LocalSettings>
     <Property Name="sonar.language">cs</Property>
-    <Property Name="sonar.cs.opencover.reportsPaths">src/DubaiSmoke.Users.Test/Coverage/coverage.opencover.xml</Property>
+    <Property Name="sonar.cs.opencover.reportsPaths">src/DubaiSmoke.Users.Test/coverage.opencover.xml</Property>
   </LocalSettings>
   <AnalyzersSettings>
     <AnalyzerSettings>

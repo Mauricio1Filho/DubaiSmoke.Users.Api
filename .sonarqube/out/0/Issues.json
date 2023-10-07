@@ -62,10 +62,10 @@
               "resultFile": {
                 "uri": "file:///home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Domain/Services/ContactTypeService.cs",
                 "region": {
-                  "startLine": 27,
-                  "startColumn": 63,
-                  "endLine": 27,
-                  "endColumn": 74
+                  "startLine": 32,
+                  "startColumn": 76,
+                  "endLine": 32,
+                  "endColumn": 87
                 }
               }
             }
@@ -83,10 +83,10 @@
               "resultFile": {
                 "uri": "file:///home/nino/Desktop/Repos/DubaiSmoke.Users.Api/src/DubaiSmoke.Users.Domain/Services/ContactTypeService.cs",
                 "region": {
-                  "startLine": 32,
-                  "startColumn": 76,
-                  "endLine": 32,
-                  "endColumn": 87
+                  "startLine": 27,
+                  "startColumn": 63,
+                  "endLine": 27,
+                  "endColumn": 74
                 }
               }
             }
