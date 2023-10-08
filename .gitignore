@@ -55,7 +55,7 @@ nunit-*.xml
 dlldata.c
 
 #sonarqube
-*.sonarqube
+*.sonarqube/
 
 # Benchmark Results
 BenchmarkDotNet.Artifacts/
