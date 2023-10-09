@@ -54,9 +54,6 @@ nunit-*.xml
 [Rr]eleasePS/
 dlldata.c
 
-#sonarqube
-.sonarqube/
-
 # Benchmark Results
 BenchmarkDotNet.Artifacts/
 
@@ -389,3 +386,6 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+#sonarqube
+.sonarqube/
