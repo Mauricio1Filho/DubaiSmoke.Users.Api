@@ -30,34 +30,19 @@ namespace DubaiSmoke.Users.Test.Api.Controller
 
         #region Success
         [Fact]
-        public async void InsertUserSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.InsertAsync(UserMocks.GetUserPayloadViewModel()));
-        }
+        public async void InsertUserSuccess() => Assert.IsType<OkObjectResult>(await _controller.InsertAsync(UserMocks.GetUserPayloadViewModel()));
 
         [Fact]
-        public async void SelectUserSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.SelectAsync(1));
-        }
+        public async void SelectUserSuccess() => Assert.IsType<OkObjectResult>(await _controller.SelectAsync(1));
 
         [Fact]
-        public async void UpdateUserSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.UpdateAsync(UserMocks.GetUserViewModel()));
-        }
+        public async void UpdateUserSuccess() => Assert.IsType<OkObjectResult>(await _controller.UpdateAsync(UserMocks.GetUserViewModel()));
 
         [Fact]
-        public async void DeleteUserSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.DeleteAsync(1));
-        }
+        public async void DeleteUserSuccess() => Assert.IsType<OkObjectResult>(await _controller.DeleteAsync(1));
 
         [Fact]
-        public async void LoginSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.Login(UserMocks.GetLoginPayloadViewModel()));
-        }
+        public async void LoginSuccess() => Assert.IsType<OkObjectResult>(await _controller.Login(UserMocks.GetLoginPayloadViewModel()));
         #endregion
 
         #region Error

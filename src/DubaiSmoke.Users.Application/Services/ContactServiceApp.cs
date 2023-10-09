@@ -12,36 +12,22 @@ namespace DubaiSmoke.Users.Application.Services
     {
         private readonly IMapper _mapper;
 
-        private readonly IContactService _contactService;
-        public ContactServiceApp(IContactService contactService, IMapper mapper)
+        private readonly IContactService _service;
+
+        public ContactServiceApp(IContactService service, IMapper mapper)
         {
-            _contactService = contactService;
+            _service = service;
             _mapper = mapper;
         }
 
-        public async Task<long> InsertAsync(ContactPayloadViewModel contact)
-        {
-            return await _contactService.InsertAsync(_mapper.Map<ContactEntity>(contact));
-        }
+        public async Task<ContactViewModel> SelectAsync(long id) => _mapper.Map<ContactViewModel>(await _service.SelectAsync(id));
 
-        public async Task<ContactViewModel> SelectAsync(long id)
-        {
-            return _mapper.Map<ContactViewModel>(await _contactService.SelectAsync(id));
-        }
+        public async Task<List<ContactViewModel>> SelectByUserIdAsync(long userId) => _mapper.Map<List<ContactViewModel>>(await _service.SelectByUserIdAsync(userId));
 
-        public async Task<ContactViewModel> UpdateAsync(ContactPayloadViewModel contact)
-        {
-            return _mapper.Map<ContactViewModel>(await _contactService.UpdateAsync(_mapper.Map<ContactEntity>(contact)));
-        }
+        public async Task<long> InsertAsync(ContactPayloadViewModel contact) => await _service.InsertAsync(_mapper.Map<ContactEntity>(contact));
 
-        public async Task<bool> DeleteAsync(long id)
-        {
-            return await _contactService.DeleteAsync(id);
-        }
+        public async Task<ContactViewModel> UpdateAsync(ContactPayloadViewModel contact) => _mapper.Map<ContactViewModel>(await _service.UpdateAsync(_mapper.Map<ContactEntity>(contact)));
 
-        public async Task<List<ContactViewModel>> SelectByUserIdAsync(long userId)
-        {
-            return _mapper.Map<List<ContactViewModel>>(await _contactService.SelectByUserIdAsync(userId));
-        }
+        public async Task<bool> DeleteAsync(long id) => await _service.DeleteAsync(id);
     }
 }

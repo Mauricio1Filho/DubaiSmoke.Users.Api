@@ -13,43 +13,31 @@ namespace DubaiSmoke.Users.Api.Controllers
     [Route("api/[controller]")]
     public class ContactTypeController : BaseController
     {
-        private readonly IContactTypeServiceApp _contactTypeServiceApp;
-        public ContactTypeController(IContactTypeServiceApp contactTypeServiceApp, ErrorHandlerNotification notifications) : base(notifications)
-        {
-            _contactTypeServiceApp = contactTypeServiceApp;
-        }
+        private readonly IContactTypeServiceApp _serviceApp;
+
+        public ContactTypeController(IContactTypeServiceApp serviceApp, ErrorHandlerNotification notifications) : base(notifications) => _serviceApp = serviceApp;
 
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(ContactTypeViewModel), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> SelectAsync(int id)
-        {
-            return Response(await _contactTypeServiceApp.SelectAsync(id));
-        }
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> SelectAsync([FromRoute] int id) => Response(await _serviceApp.SelectAsync(id));
 
         [HttpPost("register")]
         [ProducesResponseType(typeof(long), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> InsertAsync([FromBody] ContactTypePayloadViewModel payload)
-        {
-            return Response(await _contactTypeServiceApp.InsertAsync(payload));
-        }
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.UnprocessableEntity)]
+        public async Task<IActionResult> InsertAsync([FromBody] ContactTypePayloadViewModel payload) => Response(await _serviceApp.InsertAsync(payload));
 
         [HttpPut("update")]
         [ProducesResponseType(typeof(ContactTypeViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> UpdateAsync([FromBody] ContactTypeViewModel payload)
-        {
-            return Response(await _contactTypeServiceApp.UpdateAsync(payload));
-        }
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.UnprocessableEntity)]
+        public async Task<IActionResult> UpdateAsync([FromBody] ContactTypeViewModel payload) => Response(await _serviceApp.UpdateAsync(payload));
 
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> DeleteAsync(long id)
-        {
-            return Response(await _contactTypeServiceApp.DeleteAsync(id));
-        }
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> DeleteAsync([FromRoute] long id) => Response(await _serviceApp.DeleteAsync(id));
     }
 }
 

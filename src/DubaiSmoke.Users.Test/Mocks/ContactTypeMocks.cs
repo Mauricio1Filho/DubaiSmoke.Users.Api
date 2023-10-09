@@ -22,13 +22,10 @@ namespace DubaiSmoke.Users.Test.Mocks
             };
         }
 
-        public static ContactTypePayloadViewModel GetContactTypePayloadViewModel()
+        public static ContactTypePayloadViewModel GetContactTypePayloadViewModel() => new ContactTypePayloadViewModel
         {
-            return new ContactTypePayloadViewModel
-            {
-                name = "Celular",
-            };
-        }
+            name = "Celular",
+        };
 
         public static ContactTypeViewModel GetContactTypeViewModel()
         {

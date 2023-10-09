@@ -31,34 +31,19 @@ namespace DubaiSmoke.Users.Test.Application.Services
 
         #region Success
         [Fact]
-        public async void InsertUserSuccess()
-        {
-            Assert.True(await _mockServiceApp.InsertAsync(UserMocks.GetUserPayloadViewModel()) > 0);
-        }
+        public async void InsertUserSuccess() => Assert.True(await _mockServiceApp.InsertAsync(UserMocks.GetUserPayloadViewModel()) > 0);
 
         [Fact]
-        public async void SelectUserSuccess()
-        {
-            Assert.NotNull(await _mockServiceApp.SelectAsync(1));
-        }
+        public async void SelectUserSuccess() => Assert.NotNull(await _mockServiceApp.SelectAsync(1));
 
         [Fact]
-        public async void UpdateUserSuccess()
-        {
-            Assert.NotNull(await _mockServiceApp.UpdateAsync(UserMocks.GetUserViewModel()));
-        }
+        public async void UpdateUserSuccess() => Assert.NotNull(await _mockServiceApp.UpdateAsync(UserMocks.GetUserViewModel()));
 
         [Fact]
-        public async void DeleteUserSuccess()
-        {
-            Assert.True(await _mockServiceApp.DeleteAsync(1));
-        }
+        public async void DeleteUserSuccess() => Assert.True(await _mockServiceApp.DeleteAsync(1));
 
         [Fact]
-        public async void LoginSuccess()
-        {
-            Assert.True(await _mockServiceApp.LoginAsync(UserMocks.GetLoginPayloadViewModel()));
-        }
+        public async void LoginSuccess() => Assert.True(await _mockServiceApp.LoginAsync(UserMocks.GetLoginPayloadViewModel()));
         #endregion
 
         #region Error

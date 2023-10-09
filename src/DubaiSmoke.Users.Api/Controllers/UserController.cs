@@ -13,52 +13,37 @@ namespace DubaiSmoke.Users.Api.Controllers
     [Route("api/[controller]")]
     public class UserController : BaseController
     {
-        private readonly IUserServiceApp _userServiceApp;
+        private readonly IUserServiceApp _serviceApp;
 
-        public UserController(IUserServiceApp userServiceApp, ErrorHandlerNotification notifications) : base(notifications)
-        {
-            _userServiceApp = userServiceApp;
-        }
+        public UserController(IUserServiceApp serviceApp, ErrorHandlerNotification notifications) : base(notifications) => _serviceApp = serviceApp;
 
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(UserViewModel), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> SelectAsync(int id)
-        {
-            return Response(await _userServiceApp.SelectAsync(id));
-        }
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> SelectAsync([FromRoute] int id) => Response(await _serviceApp.SelectAsync(id));
 
         [HttpPost("login")]
         [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> Login([FromBody] LoginPayloadViewModel payload)
-        {
-            return Response(await _userServiceApp.LoginAsync(payload));
-        }
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> Login([FromBody] LoginPayloadViewModel payload) => Response(await _serviceApp.LoginAsync(payload));
 
 
         [HttpPost("register")]
         [ProducesResponseType(typeof(long), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> InsertAsync([FromBody] UserPayloadViewModel payload)
-        {
-            return Response(await _userServiceApp.InsertAsync(payload));
-        }
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.UnprocessableEntity)]
+        public async Task<IActionResult> InsertAsync([FromBody] UserPayloadViewModel payload) => Response(await _serviceApp.InsertAsync(payload));
 
         [HttpPut("update")]
         [ProducesResponseType(typeof(UserViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> UpdateAsync([FromBody] UserViewModel payload)
-        {
-            return Response(await _userServiceApp.UpdateAsync(payload));
-        }
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.UnprocessableEntity)]
+        public async Task<IActionResult> UpdateAsync([FromBody] UserViewModel payload) => Response(await _serviceApp.UpdateAsync(payload));
 
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> DeleteAsync(long id)
-        {
-            return Response(await _userServiceApp.DeleteAsync(id));
-        }
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> DeleteAsync([FromRoute] long id) => Response(await _serviceApp.DeleteAsync(id));
     }
 }

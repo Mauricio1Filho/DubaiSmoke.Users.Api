@@ -12,36 +12,22 @@ namespace DubaiSmoke.Users.Application.Services
     {
         private readonly IMapper _mapper;
 
-        private readonly IAddressService _addressService;
-        public AddressServiceApp(IAddressService addressService, IMapper mapper)
+        private readonly IAddressService _service;
+
+        public AddressServiceApp(IAddressService service, IMapper mapper)
         {
-            _addressService = addressService;
+            _service = service;
             _mapper = mapper;
         }
 
-        public async Task<long> InsertAsync(AddressPayloadViewModel address)
-        {
-            return await _addressService.InsertAsync(_mapper.Map<AddressEntity>(address));
-        }
+        public async Task<AddressViewModel> SelectAsync(long id) => _mapper.Map<AddressViewModel>(await _service.SelectAsync(id));
 
-        public async Task<AddressViewModel> SelectAsync(long id)
-        {
-            return _mapper.Map<AddressViewModel>(await _addressService.SelectAsync(id));
-        }
+        public async Task<long> InsertAsync(AddressPayloadViewModel address) => await _service.InsertAsync(_mapper.Map<AddressEntity>(address));
 
-        public async Task<AddressViewModel> UpdateAsync(AddressPayloadViewModel address)
-        {
-            return _mapper.Map<AddressViewModel>(await _addressService.UpdateAsync(_mapper.Map<AddressEntity>(address)));
-        }
+        public async Task<AddressViewModel> UpdateAsync(AddressPayloadViewModel address) => _mapper.Map<AddressViewModel>(await _service.UpdateAsync(_mapper.Map<AddressEntity>(address)));
 
-        public async Task<bool> DeleteAsync(long id)
-        {
-            return await _addressService.DeleteAsync(id);
-        }
+        public async Task<bool> DeleteAsync(long id) => await _service.DeleteAsync(id);
 
-        public async Task<List<AddressViewModel>> GetAddressByUserId(long userId)
-        {
-            return _mapper.Map<List<AddressViewModel>>(await _addressService.GetAddressByUserId(userId));
-        }
+        public async Task<List<AddressViewModel>> GetAddressByUserId(long userId) => _mapper.Map<List<AddressViewModel>>(await _service.GetAddressByUserId(userId));
     }
 }

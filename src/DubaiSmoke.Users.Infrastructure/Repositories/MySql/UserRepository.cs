@@ -13,10 +13,7 @@ namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
     {
         readonly IUnitOfWork _unitOfWork;
 
-        public UserRepository(IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-        }
+        public UserRepository(IUnitOfWork unitOfWork) => _unitOfWork = unitOfWork;
 
         public async Task<bool> DeleteAsync(long id)
         {

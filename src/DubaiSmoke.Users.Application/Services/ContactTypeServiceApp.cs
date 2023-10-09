@@ -11,31 +11,20 @@ namespace DubaiSmoke.Users.Application.Services
     {
         private readonly IMapper _mapper;
 
-        private readonly IContactTypeService _contactTypeService;
-        public ContactTypeServiceApp(IContactTypeService contactTypeService, IMapper mapper)
+        private readonly IContactTypeService _service;
+
+        public ContactTypeServiceApp(IContactTypeService service, IMapper mapper)
         {
-            _contactTypeService = contactTypeService;
+            _service = service;
             _mapper = mapper;
         }
 
-        public async Task<long> InsertAsync(ContactTypePayloadViewModel contactType)
-        {
-            return await _contactTypeService.InsertAsync(_mapper.Map<ContactTypeEntity>(contactType));
-        }
+        public async Task<ContactTypeViewModel> SelectAsync(long id) => _mapper.Map<ContactTypeViewModel>(await _service.SelectAsync(id));
 
-        public async Task<ContactTypeViewModel> SelectAsync(long id)
-        {
-            return _mapper.Map<ContactTypeViewModel>(await _contactTypeService.SelectAsync(id));
-        }
+        public async Task<long> InsertAsync(ContactTypePayloadViewModel contactType) => await _service.InsertAsync(_mapper.Map<ContactTypeEntity>(contactType));
 
-        public async Task<ContactTypeViewModel> UpdateAsync(ContactTypeViewModel contactType)
-        {
-            return _mapper.Map<ContactTypeViewModel>(await _contactTypeService.UpdateAsync(_mapper.Map<ContactTypeEntity>(contactType)));
-        }
+        public async Task<ContactTypeViewModel> UpdateAsync(ContactTypeViewModel contactType) => _mapper.Map<ContactTypeViewModel>(await _service.UpdateAsync(_mapper.Map<ContactTypeEntity>(contactType)));
 
-        public async Task<bool> DeleteAsync(long id)
-        {
-            return await _contactTypeService.DeleteAsync(id);
-        }
+        public async Task<bool> DeleteAsync(long id) => await _service.DeleteAsync(id);
     }
 }

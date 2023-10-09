@@ -14,51 +14,35 @@ namespace DubaiSmoke.Users.Api.Controllers
     [Route("api/[controller]")]
     public class AddressController : BaseController
     {
-        private readonly IAddressServiceApp _addressServiceApp;
+        private readonly IAddressServiceApp _serviceApp;
 
-        public AddressController(IAddressServiceApp addressServiceApp, ErrorHandlerNotification notifications) : base(notifications)
-        {
-            _addressServiceApp = addressServiceApp;
-        }
+        public AddressController(IAddressServiceApp serviceApp, ErrorHandlerNotification notifications) : base(notifications) => _serviceApp = serviceApp;
 
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(AddressViewModel), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> SelectAsync(int id)
-        {
-            return Response(await _addressServiceApp.SelectAsync(id));
-        }
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> SelectAsync([FromRoute] int id) => Response(await _serviceApp.SelectAsync(id));
 
         [HttpGet("user/{userId}")]
         [ProducesResponseType(typeof(List<AddressViewModel>), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> GetAddressByUserId(int userId)
-        {
-            return Response(await _addressServiceApp.GetAddressByUserId(userId));
-        }
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> GetAddressByUserId([FromRoute] int userId) => Response(await _serviceApp.GetAddressByUserId(userId));
 
         [HttpPost("register")]
         [ProducesResponseType(typeof(long), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> InsertAsync([FromBody] AddressPayloadViewModel payload)
-        {
-            return Response(await _addressServiceApp.InsertAsync(payload));
-        }
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.UnprocessableEntity)]
+        public async Task<IActionResult> InsertAsync([FromBody] AddressPayloadViewModel payload) => Response(await _serviceApp.InsertAsync(payload));
 
         [HttpPut("update")]
         [ProducesResponseType(typeof(AddressViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> UpdateAsync([FromBody] AddressPayloadViewModel payload)
-        {
-            return Response(await _addressServiceApp.UpdateAsync(payload));
-        }
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.UnprocessableEntity)]
+        public async Task<IActionResult> UpdateAsync([FromBody] AddressPayloadViewModel payload) => Response(await _serviceApp.UpdateAsync(payload));
 
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> DeleteAsync(long id)
-        {
-            return Response(await _addressServiceApp.DeleteAsync(id));
-        }
+        [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> DeleteAsync([FromRoute] long id) => Response(await _serviceApp.DeleteAsync(id));
     }
 }

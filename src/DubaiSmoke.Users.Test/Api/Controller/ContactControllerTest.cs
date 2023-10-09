@@ -30,34 +30,19 @@ namespace DubaiSmoke.Users.Test.Api.Controller
 
         #region Success
         [Fact]
-        public async void InsertContactSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.InsertAsync(ContactMocks.GetContactPayloadViewModel()));
-        }
+        public async void InsertContactSuccess() => Assert.IsType<OkObjectResult>(await _controller.InsertAsync(ContactMocks.GetContactPayloadViewModel()));
 
         [Fact]
-        public async void SelectContactSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.SelectAsync(1));
-        }
+        public async void SelectContactSuccess() => Assert.IsType<OkObjectResult>(await _controller.SelectAsync(1));
 
         [Fact]
-        public async void UpdateContactSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.UpdateAsync(ContactMocks.GetContactPayloadViewModel()));
-        }
+        public async void UpdateContactSuccess() => Assert.IsType<OkObjectResult>(await _controller.UpdateAsync(ContactMocks.GetContactPayloadViewModel()));
 
         [Fact]
-        public async void DeleteContactSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.DeleteAsync(1));
-        }
+        public async void DeleteContactSuccess() => Assert.IsType<OkObjectResult>(await _controller.DeleteAsync(1));
 
         [Fact]
-        public async void SelectByUserIdSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.SelectByUserIdAsync(1));
-        }
+        public async void SelectByUserIdSuccess() => Assert.IsType<OkObjectResult>(await _controller.SelectByUserIdAsync(1));
 
         #endregion
 

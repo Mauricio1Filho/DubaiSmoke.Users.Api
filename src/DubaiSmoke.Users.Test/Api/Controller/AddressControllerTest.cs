@@ -30,34 +30,19 @@ namespace DubaiSmoke.Users.Test.Api.Controller
 
         #region Success
         [Fact]
-        public async void InsertAddressSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.InsertAsync(AddressMocks.GetAddressPayloadViewModel()));
-        }
+        public async void InsertAddressSuccess() => Assert.IsType<OkObjectResult>(await _controller.InsertAsync(AddressMocks.GetAddressPayloadViewModel()));
 
         [Fact]
-        public async void GetAddressByUserIdSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.GetAddressByUserId(1));
-        }
+        public async void GetAddressByUserIdSuccess() => Assert.IsType<OkObjectResult>(await _controller.GetAddressByUserId(1));
 
         [Fact]
-        public async void SelectAddressSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.SelectAsync(1));
-        }
+        public async void SelectAddressSuccess() => Assert.IsType<OkObjectResult>(await _controller.SelectAsync(1));
 
         [Fact]
-        public async void UpdateAddressSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.UpdateAsync(AddressMocks.GetAddressPayloadViewModel()));
-        }
+        public async void UpdateAddressSuccess() => Assert.IsType<OkObjectResult>(await _controller.UpdateAsync(AddressMocks.GetAddressPayloadViewModel()));
 
         [Fact]
-        public async void DeleteAddressSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.DeleteAsync(1));
-        }
+        public async void DeleteAddressSuccess() => Assert.IsType<OkObjectResult>(await _controller.DeleteAsync(1));
         #endregion
 
         #region Error

@@ -33,34 +33,19 @@ namespace DubaiSmoke.Users.Test.Application.Services
 
         #region Success
         [Fact]
-        public async void InsertContactSuccess()
-        {
-            Assert.True(await _mockServiceApp.InsertAsync(ContactMocks.GetContactPayloadViewModel()) > 0);
-        }
+        public async void InsertContactSuccess() => Assert.True(await _mockServiceApp.InsertAsync(ContactMocks.GetContactPayloadViewModel()) > 0);
 
         [Fact]
-        public async void SelectContactSuccess()
-        {
-            Assert.NotNull(await _mockServiceApp.SelectAsync(1));
-        }
+        public async void SelectContactSuccess() => Assert.NotNull(await _mockServiceApp.SelectAsync(1));
 
         [Fact]
-        public async void UpdateContactSuccess()
-        {
-            Assert.NotNull(await _mockServiceApp.UpdateAsync(ContactMocks.GetContactPayloadViewModel()));
-        }
+        public async void UpdateContactSuccess() => Assert.NotNull(await _mockServiceApp.UpdateAsync(ContactMocks.GetContactPayloadViewModel()));
 
         [Fact]
-        public async void DeleteContactSuccess()
-        {
-            Assert.True(await _mockServiceApp.DeleteAsync(1));
-        }
+        public async void DeleteContactSuccess() => Assert.True(await _mockServiceApp.DeleteAsync(1));
 
         [Fact]
-        public async void SelectByUserIdSuccess()
-        {
-            Assert.NotNull(await _mockServiceApp.SelectByUserIdAsync(1));
-        }
+        public async void SelectByUserIdSuccess() => Assert.NotNull(await _mockServiceApp.SelectByUserIdAsync(1));
 
         #endregion
 

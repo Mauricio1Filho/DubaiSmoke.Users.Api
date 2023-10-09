@@ -29,28 +29,16 @@ namespace DubaiSmoke.Users.Test.Api.Controller
 
         #region Success
         [Fact]
-        public async void InsertContactTypeSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.InsertAsync(ContactTypeMocks.GetContactTypePayloadViewModel()));
-        }
+        public async void InsertContactTypeSuccess() => Assert.IsType<OkObjectResult>(await _controller.InsertAsync(ContactTypeMocks.GetContactTypePayloadViewModel()));
 
         [Fact]
-        public async void SelectContactTypeSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.SelectAsync(1));
-        }
+        public async void SelectContactTypeSuccess() => Assert.IsType<OkObjectResult>(await _controller.SelectAsync(1));
 
         [Fact]
-        public async void UpdateContactTypeSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.UpdateAsync(ContactTypeMocks.GetContactTypeViewModel()));
-        }
+        public async void UpdateContactTypeSuccess() => Assert.IsType<OkObjectResult>(await _controller.UpdateAsync(ContactTypeMocks.GetContactTypeViewModel()));
 
         [Fact]
-        public async void DeleteContactTypeSuccess()
-        {
-            Assert.IsType<OkObjectResult>(await _controller.DeleteAsync(1));
-        }        
+        public async void DeleteContactTypeSuccess() => Assert.IsType<OkObjectResult>(await _controller.DeleteAsync(1));
         #endregion
 
         #region Error
@@ -80,7 +68,7 @@ namespace DubaiSmoke.Users.Test.Api.Controller
         {
             _contactTypeServiceApp.Setup(x => x.DeleteAsync(It.IsAny<long>())).ReturnsAsync(false);
             Assert.IsType<OkObjectResult>(await _controller.DeleteAsync(0));
-        }        
+        }
         #endregion
     }
 }

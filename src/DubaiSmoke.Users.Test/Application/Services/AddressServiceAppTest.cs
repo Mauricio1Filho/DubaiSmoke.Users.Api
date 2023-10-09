@@ -33,34 +33,19 @@ namespace DubaiSmoke.Users.Test.Application.Services
 
         #region Success
         [Fact]
-        public async void InsertAddressSuccess()
-        {
-            Assert.True(await _mockServiceApp.InsertAsync(AddressMocks.GetAddressPayloadViewModel()) > 0);
-        }
+        public async void InsertAddressSuccess() => Assert.True(await _mockServiceApp.InsertAsync(AddressMocks.GetAddressPayloadViewModel()) > 0);
 
         [Fact]
-        public async void GetAddressByUserIdSuccess()
-        {
-            Assert.NotNull(await _mockServiceApp.GetAddressByUserId(1));
-        }
+        public async void GetAddressByUserIdSuccess() => Assert.NotNull(await _mockServiceApp.GetAddressByUserId(1));
 
         [Fact]
-        public async void SelectAddressSuccess()
-        {
-            Assert.NotNull(await _mockServiceApp.SelectAsync(1));
-        }
+        public async void SelectAddressSuccess() => Assert.NotNull(await _mockServiceApp.SelectAsync(1));
 
         [Fact]
-        public async void UpdateAddressSuccess()
-        {
-            Assert.NotNull(await _mockServiceApp.UpdateAsync(AddressMocks.GetAddressPayloadViewModel()));
-        }
+        public async void UpdateAddressSuccess() => Assert.NotNull(await _mockServiceApp.UpdateAsync(AddressMocks.GetAddressPayloadViewModel()));
 
         [Fact]
-        public async void DeleteAddressSuccess()
-        {
-            Assert.True(await _mockServiceApp.DeleteAsync(1));
-        }
+        public async void DeleteAddressSuccess() => Assert.True(await _mockServiceApp.DeleteAsync(1));
         #endregion
 
         #region Error

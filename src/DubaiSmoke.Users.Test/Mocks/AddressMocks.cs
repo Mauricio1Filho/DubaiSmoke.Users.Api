@@ -55,26 +55,20 @@ namespace DubaiSmoke.Users.Test.Mocks
             };
         }
 
-        public static List<AddressEntity> GetAddressEntityList()
-        {
-            return new List<AddressEntity>
+        public static List<AddressEntity> GetAddressEntityList() => new List<AddressEntity>
             {
                GetAddressEntity(),
                GetAddressEntity(),
                GetAddressEntity(),
                GetAddressEntity()
             };
-        }
 
-        public static List<AddressViewModel> GetAddressViewModelList()
-        {
-            return new List<AddressViewModel>
+        public static List<AddressViewModel> GetAddressViewModelList() => new List<AddressViewModel>
             {
                GetAddressViewModel(),
                GetAddressViewModel(),
                GetAddressViewModel(),
                GetAddressViewModel()
             };
-        }
     }
 }

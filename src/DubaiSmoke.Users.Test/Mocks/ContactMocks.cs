@@ -47,26 +47,20 @@ namespace DubaiSmoke.Users.Test.Mocks
             };
         }
 
-        public static List<ContactEntity> GetContactEntityList()
-        {
-            return new List<ContactEntity>
+        public static List<ContactEntity> GetContactEntityList() => new List<ContactEntity>
             {
                GetContactEntity(),
                GetContactEntity(),
                GetContactEntity(),
                GetContactEntity()
             };
-        }
 
-        public static List<ContactViewModel> GetContactViewModelList()
-        {
-            return new List<ContactViewModel>
+        public static List<ContactViewModel> GetContactViewModelList() => new List<ContactViewModel>
             {
                GetContactViewModel(),
                GetContactViewModel(),
                GetContactViewModel(),
                GetContactViewModel()
             };
-        }
     }
 }

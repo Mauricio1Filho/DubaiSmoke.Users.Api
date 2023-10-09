@@ -11,42 +11,22 @@ namespace DubaiSmoke.Users.Application.Services
     {
         private readonly IMapper _mapper;
 
-        private readonly IUserService _userService;
+        private readonly IUserService _service;
+
         public UserServiceApp(IUserService userService, IMapper mapper)
         {
-            _userService = userService;
+            _service = userService;
             _mapper = mapper;
         }
 
-        public async Task<long> InsertAsync(UserPayloadViewModel user)
-        {
-            return await _userService.InsertAsync(_mapper.Map<UserEntity>(user));
-        }
+        public async Task<long> InsertAsync(UserPayloadViewModel user) => await _service.InsertAsync(_mapper.Map<UserEntity>(user));
 
-        public async Task<UserViewModel> SelectAsync(long id)
-        {
-            return _mapper.Map<UserViewModel>(await _userService.SelectAsync(id));
-        }
+        public async Task<UserViewModel> SelectAsync(long id) => _mapper.Map<UserViewModel>(await _service.SelectAsync(id));
 
-        public async Task<UserViewModel> UpdateAsync(UserViewModel user)
-        {
-            return _mapper.Map<UserViewModel>(await _userService.UpdateAsync(_mapper.Map<UserEntity>(user)));
-        }
+        public async Task<UserViewModel> UpdateAsync(UserViewModel user) => _mapper.Map<UserViewModel>(await _service.UpdateAsync(_mapper.Map<UserEntity>(user)));
 
-        public async Task<bool> DeleteAsync(long id)
-        {
-            return await _userService.DeleteAsync(id);
-        }
+        public async Task<bool> DeleteAsync(long id) => await _service.DeleteAsync(id);
 
-        public async Task<bool> LoginAsync(LoginPayloadViewModel payload)
-        {
-            var map = new UserEntity
-            {
-                Login = payload.email,
-                Password = payload.password
-            };
-
-            return await _userService.LoginAsync(map);
-        }
+        public async Task<bool> LoginAsync(LoginPayloadViewModel payload) => await _service.LoginAsync(_mapper.Map<UserEntity>(payload));
     }
 }

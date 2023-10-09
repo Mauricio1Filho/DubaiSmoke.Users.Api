@@ -21,32 +21,52 @@ namespace DubaiSmoke.Users.Domain.Services
 
         public async Task<bool> DeleteAsync(long id)
         {
-            return await _userRepository.DeleteAsync(id);
-        }
+            var user = await _userRepository.DeleteAsync(id);
 
-        public async Task<UserEntity> SelectAsync(long id)
-        {
-            var user = await _userRepository.SelectAsync(id);
-
-            if (user is null)
-                await _notifications.Handle(new ErrorDetail($"Usuário não encontrado: {id}", "001", string.Empty, HttpStatusCode.NotFound));
+            if (!user)
+                await _notifications.Handle(new ErrorDetail($"Usuário não encontrado", "015", string.Empty, HttpStatusCode.NotFound));
 
             return user;
         }
 
+        public async Task<UserEntity> SelectAsync(long id)
+        {
+            var result = await _userRepository.SelectAsync(id);
+
+            if (result is null)
+                await _notifications.Handle(new ErrorDetail($"Usuário não encontrado", "016", string.Empty, HttpStatusCode.NotFound));
+
+            return result;
+        }
+
         public async Task<long> InsertAsync(UserEntity user)
         {
-            return await _userRepository.InsertAsync(user);
+            var result = await _userRepository.InsertAsync(user);
+
+            if (result < 1)
+                await _notifications.Handle(new ErrorDetail($"Erro ao cadastrar usuário", "017", string.Empty, HttpStatusCode.UnprocessableEntity));
+
+            return result;
         }
 
         public async Task<UserEntity> UpdateAsync(UserEntity user)
         {
-            return await _userRepository.UpdateAsync(user);
+            var result = await _userRepository.UpdateAsync(user);
+
+            if (result is null)
+                await _notifications.Handle(new ErrorDetail($"Erro ao atualizar usuário", "018", string.Empty, HttpStatusCode.UnprocessableEntity));
+
+            return result;
         }
 
         public async Task<bool> LoginAsync(UserEntity user)
         {
-            return await _userRepository.LoginAsync(user);
+            var result = await _userRepository.LoginAsync(user);
+
+            if (!result)
+                await _notifications.Handle(new ErrorDetail($"Falha no login", "018", string.Empty, HttpStatusCode.NotFound));
+
+            return result;
         }
     }
 }
