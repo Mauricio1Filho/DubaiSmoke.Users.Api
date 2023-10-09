@@ -64,7 +64,7 @@ namespace DubaiSmoke.Users.Domain.Services
             var result = await _userRepository.LoginAsync(user);
 
             if (!result)
-                await _notifications.Handle(new ErrorDetail($"Falha no login", "018", string.Empty, HttpStatusCode.NotFound));
+                await _notifications.Handle(new ErrorDetail($"Falha no login", "019", string.Empty, HttpStatusCode.NotFound));
 
             return result;
         }

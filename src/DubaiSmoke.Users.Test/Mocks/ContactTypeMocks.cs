@@ -22,7 +22,7 @@ namespace DubaiSmoke.Users.Test.Mocks
             };
         }
 
-        public static ContactTypePayloadViewModel GetContactTypePayloadViewModel() => new ContactTypePayloadViewModel
+        public static ContactTypePayloadViewModel GetContactTypePayloadViewModel() => new()
         {
             name = "Celular",
         };

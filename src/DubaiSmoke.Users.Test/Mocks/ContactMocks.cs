@@ -47,16 +47,16 @@ namespace DubaiSmoke.Users.Test.Mocks
             };
         }
 
-        public static List<ContactEntity> GetContactEntityList() => new List<ContactEntity>
-            {
+        public static List<ContactEntity> GetContactEntityList() => new()
+        {
                GetContactEntity(),
                GetContactEntity(),
                GetContactEntity(),
                GetContactEntity()
             };
 
-        public static List<ContactViewModel> GetContactViewModelList() => new List<ContactViewModel>
-            {
+        public static List<ContactViewModel> GetContactViewModelList() => new()
+        {
                GetContactViewModel(),
                GetContactViewModel(),
                GetContactViewModel(),
