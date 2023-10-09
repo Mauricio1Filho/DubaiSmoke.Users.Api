@@ -62,6 +62,14 @@ namespace DubaiSmoke.Users.Test.Domain.Services
         }
 
         [Fact]
+        public async void GetAddressByUserIdError()
+        {
+            _addressRepositoryMock.Setup(x => x.GetAddressByUserId(It.IsAny<long>()));
+            Assert.Null(await _addressService.GetAddressByUserId(1));
+            Assert.True(_notifications.HasNotifications());
+        }
+
+        [Fact]
         public async void UpdateAddressError()
         {
             _addressRepositoryMock.Setup(x => x.UpdateAsync(It.IsAny<AddressEntity>()));
