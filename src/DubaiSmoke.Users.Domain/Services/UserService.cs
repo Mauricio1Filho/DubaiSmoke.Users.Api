@@ -2,6 +2,7 @@
 using DubaiSmoke.Users.Domain.Interfaces;
 using DubaiSmoke.Users.Domain.Repositories;
 using ErrorHandler.Models;
+using System;
 using System.Net;
 using System.Threading.Tasks;
 using static ErrorHandler.Models.ErrorHandlerNotification.ClientError;
@@ -41,6 +42,8 @@ namespace DubaiSmoke.Users.Domain.Services
 
         public async Task<long> InsertAsync(UserEntity user)
         {
+            user.HashCode = Guid.NewGuid().ToString();
+
             var result = await _userRepository.InsertAsync(user);
 
             if (result < 1)
@@ -51,6 +54,8 @@ namespace DubaiSmoke.Users.Domain.Services
 
         public async Task<UserEntity> UpdateAsync(UserEntity user)
         {
+            user.UpdatedAt = DateTime.Now;
+
             var result = await _userRepository.UpdateAsync(user);
 
             if (result is null)

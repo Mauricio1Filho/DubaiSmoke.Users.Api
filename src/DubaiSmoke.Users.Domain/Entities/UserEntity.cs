@@ -8,6 +8,7 @@ namespace DubaiSmoke.Users.Domain.Entities
     [Table("users")]
     public class UserEntity : BaseEntity
     {
+        public UserEntity() { }
         public string Name { get; set; }
         public DateTime BirthDay { get; set; }
         public string Login { get; set; }

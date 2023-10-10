@@ -2,6 +2,7 @@
 using DubaiSmoke.Users.Domain.Interfaces;
 using DubaiSmoke.Users.Domain.Repositories;
 using ErrorHandler.Models;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
@@ -42,6 +43,8 @@ namespace DubaiSmoke.Users.Domain.Services
 
         public async Task<long> InsertAsync(ContactEntity contact)
         {
+            contact.HashCode = Guid.NewGuid().ToString();
+
             var result = await _contactRepository.InsertAsync(contact);
 
             if (result < 1)
@@ -52,6 +55,8 @@ namespace DubaiSmoke.Users.Domain.Services
 
         public async Task<ContactEntity> UpdateAsync(ContactEntity contact)
         {
+            contact.UpdatedAt = DateTime.Now;
+
             var result = await _contactRepository.UpdateAsync(contact);
 
             if (result is null)

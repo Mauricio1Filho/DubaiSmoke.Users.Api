@@ -7,9 +7,6 @@ namespace DubaiSmoke.Users.Application.Validation
     [ExcludeFromCodeCoverage]
     public class ContactTypeValidator : AbstractValidator<ContactTypePayloadViewModel>
     {
-        public ContactTypeValidator()
-        {
-            RuleFor(x => x.name).NotNull().NotEmpty().WithMessage("O Nome é obrigatório");
-        }
+        public ContactTypeValidator() => RuleFor(x => x.name).NotNull().NotEmpty().WithMessage("O Nome é obrigatório");
     }
 }

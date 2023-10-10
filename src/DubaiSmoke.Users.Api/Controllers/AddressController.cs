@@ -28,13 +28,13 @@ namespace DubaiSmoke.Users.Api.Controllers
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> GetAddressByUserId([FromRoute] int userId) => Response(await _serviceApp.GetAddressByUserId(userId));
 
-        [HttpPost("register")]
+        [HttpPost]
         [ProducesResponseType(typeof(long), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.UnprocessableEntity)]
         public async Task<IActionResult> InsertAsync([FromBody] AddressPayloadViewModel payload) => Response(await _serviceApp.InsertAsync(payload));
 
-        [HttpPut("update")]
+        [HttpPut]
         [ProducesResponseType(typeof(AddressViewModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.UnprocessableEntity)]
