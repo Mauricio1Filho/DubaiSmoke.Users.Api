@@ -15,41 +15,18 @@ namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
 
         public ContactTypeRepository(IUnitOfWork unitOfWork) => _unitOfWork = unitOfWork;
 
-        public async Task<bool> DeleteAsync(long id)
-        {
-            string sql = @"UPDATE contacts_type SET
-                           DT_DELETED = @DeletedAt
-                           WHERE ID = @Id;";
+        public async Task<bool> DeleteAsync(long id) => await _unitOfWork.Connection.ExecuteAndReturnBoolAsync(
+                @"UPDATE contacts_type SET DT_DELETED = @DeletedAt WHERE ID = @Id;", new { DeletedAt = DateTime.Now, Id = id });
 
-            return await _unitOfWork.Connection.ExecuteAndReturnBoolAsync(sql, new { DeletedAt = DateTime.Now, Id = id });
-        }
+        public async Task<long> InsertAsync(ContactTypeEntity item) => await _unitOfWork.Connection.QueryFirstOrDefaultAsync<long>(
+                @"INSERT INTO contacts_type (TXT_NAME, DT_CREATED, DT_UPDATED, DT_DELETED, HASH_CODE)
+                  VALUES (@Name, @CreatedAt, @UpdatedAt, @DeletedAt, @HashCode);
+                  SELECT ID FROM contacts_type WHERE HASH_CODE = @HashCode", item);
 
-        public async Task<long> InsertAsync(ContactTypeEntity item)
-        {
-            string sql = @"INSERT INTO contacts_type (TXT_NAME, DT_CREATED, DT_UPDATED, DT_DELETED, HASH_CODE)
-                            Values (@Name, @CreatedAt, @UpdatedAt, @DeletedAt, @HashCode);
-                                SELECT ID FROM contacts_type WHERE HASH_CODE = @HashCode";
+        public async Task<ContactTypeEntity> SelectAsync(long id) => await _unitOfWork.Connection.QueryFirstOrDefaultAsync<ContactTypeEntity>(
+                @"SELECT * FROM contacts_type WHERE id = @Id;", new { id });
 
-            item.HashCode = Guid.NewGuid().ToString();
-            return await _unitOfWork.Connection.QueryFirstOrDefaultAsync<long>(sql, item);
-        }
-
-        public async Task<ContactTypeEntity> SelectAsync(long id)
-        {
-            string sql = @"SELECT * FROM contacts_type WHERE id = @Id;";
-
-            return await _unitOfWork.Connection.QueryFirstOrDefaultAsync<ContactTypeEntity>(sql, new { id });
-        }
-
-        public async Task<ContactTypeEntity> UpdateAsync(ContactTypeEntity item)
-        {
-            string sql = @"UPDATE contacts_type SET
-                           TXT_NAME = @Name,
-                           DT_UPDATED = @UpdatedAt
-                           WHERE ID = @Id;";
-
-            item.UpdatedAt = DateTime.Now;
-            return await _unitOfWork.Connection.QueryFirstOrDefaultAsync<ContactTypeEntity>(sql, item);
-        }
+        public async Task<ContactTypeEntity> UpdateAsync(ContactTypeEntity item) => await _unitOfWork.Connection.QueryFirstOrDefaultAsync<ContactTypeEntity>(
+                @"UPDATE contacts_type SET TXT_NAME = @Name, DT_UPDATED = @UpdatedAt WHERE ID = @Id; SELECT * FROM contacts_type WHERE id = @Id;", item);
     }
 }

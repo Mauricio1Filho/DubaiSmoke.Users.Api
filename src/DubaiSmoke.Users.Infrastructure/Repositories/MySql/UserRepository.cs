@@ -15,54 +15,27 @@ namespace DubaiSmoke.Users.Infrastructure.Repositories.MySql
 
         public UserRepository(IUnitOfWork unitOfWork) => _unitOfWork = unitOfWork;
 
-        public async Task<bool> DeleteAsync(long id)
-        {
-            string sql = @"UPDATE users SET
-                           DT_DELETED = @DeletedAt
-                           WHERE ID = @Id;";
+        public async Task<bool> DeleteAsync(long id) => await _unitOfWork.Connection.ExecuteAndReturnBoolAsync(
+                @"UPDATE users SET DT_DELETED = @DeletedAt WHERE ID = @Id;", new { DeletedAt = DateTime.Now, Id = id });
 
-            return await _unitOfWork.Connection.ExecuteAndReturnBoolAsync(sql, new { DeletedAt = DateTime.Now, Id = id });
-        }
-
-        public async Task<long> InsertAsync(UserEntity item)
-        {
-            string sql = @"INSERT INTO users (NM_USER, DT_BIRTH, TXT_LOGIN, TXT_PWD, DT_CREATED, DT_UPDATED, DT_DELETED, HASH_CODE)
-                            Values (@Name, @BirthDay, @Login, @Password, @CreatedAt, @UpdatedAt, @DeletedAt, @HashCode);
-                                SELECT ID FROM users WHERE HASH_CODE = @HashCode";
-
-            item.HashCode = Guid.NewGuid().ToString();
-            return await _unitOfWork.Connection.QueryFirstOrDefaultAsync<long>(sql, item);
-        }
+        public async Task<long> InsertAsync(UserEntity item) => await _unitOfWork.Connection.QueryFirstOrDefaultAsync<long>(
+                @"INSERT INTO users (NM_USER, DT_BIRTH, TXT_LOGIN, TXT_PWD, DT_CREATED, DT_UPDATED, DT_DELETED, HASH_CODE)
+                  VALUES (@Name, @BirthDay, @Login, @Password, @CreatedAt, @UpdatedAt, @DeletedAt, @HashCode);
+                  SELECT ID FROM users WHERE HASH_CODE = @HashCode", item);
 
         public async Task<bool> LoginAsync(UserEntity user)
         {
-            string sql = @"SELECT HASH_CODE FROM users WHERE TXT_LOGIN = @email AND TXT_PWD = @password";
-
-            if (await _unitOfWork.Connection.QueryFirstOrDefaultAsync(sql, new { email = user.Login, password = user.Password }) is null)
-                return false;
+            if (await _unitOfWork.Connection.QueryFirstOrDefaultAsync(@"SELECT ID FROM users WHERE TXT_LOGIN = @email AND TXT_PWD = @password",
+                new { email = user.Login, password = user.Password }) is null) return false;
 
             return true;
         }
 
-        public async Task<UserEntity> SelectAsync(long id)
-        {
-            string sql = @"SELECT * FROM users WHERE ID = @id;";
+        public async Task<UserEntity> SelectAsync(long id) => await _unitOfWork.Connection.QueryFirstOrDefaultAsync<UserEntity>(
+                @"SELECT * FROM users WHERE ID = @id;", new { id });
 
-            return await _unitOfWork.Connection.QueryFirstOrDefaultAsync<UserEntity>(sql, new { id });
-        }
-
-        public async Task<UserEntity> UpdateAsync(UserEntity item)
-        {
-            string sql = @"UPDATE users SET
-                           NM_USER = @Name,
-                           DT_BIRTH = @BirthDay, 
-                           TXT_LOGIN = @Login,
-                           TXT_PWD = @Password,
-                           DT_UPDATED = @UpdatedAt
-                           WHERE ID = @Id;";
-
-            item.UpdatedAt = DateTime.Now;
-            return await _unitOfWork.Connection.QueryFirstOrDefaultAsync<UserEntity>(sql, item);
-        }
+        public async Task<UserEntity> UpdateAsync(UserEntity item) => await _unitOfWork.Connection.QueryFirstOrDefaultAsync<UserEntity>(
+                @"UPDATE users SET NM_USER = @Name, DT_BIRTH = @BirthDay, TXT_LOGIN = @Login, TXT_PWD = @Password, DT_UPDATED = @UpdatedAt
+                  WHERE ID = @Id; SELECT * FROM users WHERE ID = @id; ", item);
     }
 }

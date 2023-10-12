@@ -2,6 +2,7 @@
 using DubaiSmoke.Users.Domain.Interfaces;
 using DubaiSmoke.Users.Domain.Repositories;
 using ErrorHandler.Models;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
@@ -42,6 +43,8 @@ namespace DubaiSmoke.Users.Domain.Services
 
         public async Task<long> InsertAsync(AddressEntity address)
         {
+            address.HashCode = Guid.NewGuid().ToString();
+
             var result = await _addressRepository.InsertAsync(address);
 
             if (result < 1)
@@ -52,6 +55,8 @@ namespace DubaiSmoke.Users.Domain.Services
 
         public async Task<AddressEntity> UpdateAsync(AddressEntity address)
         {
+            address.UpdatedAt = DateTime.Now;
+
             var result = await _addressRepository.UpdateAsync(address);
 
             if (result is null)
