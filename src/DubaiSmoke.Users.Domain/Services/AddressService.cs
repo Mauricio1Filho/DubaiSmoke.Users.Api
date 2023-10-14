@@ -12,8 +12,8 @@ namespace DubaiSmoke.Users.Domain.Services
 {
     public class AddressService : IAddressService
     {
-        private IAddressRepository _addressRepository;
-        private ErrorHandlerNotification _notifications;
+        private readonly IAddressRepository _addressRepository;
+        private readonly ErrorHandlerNotification _notifications;
 
         public AddressService(IAddressRepository addressRepository, ErrorHandlerNotification notifications)
         {

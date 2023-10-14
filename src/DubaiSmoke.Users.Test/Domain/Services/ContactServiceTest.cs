@@ -10,9 +10,9 @@ namespace DubaiSmoke.Users.Test.Domain.Services
 {
     public class ContactServiceTest
     {
-        ContactService _contactService;
-        Mock<IContactRepository> _contactRepositoryMock;
-        ErrorHandlerNotification _notifications;
+        readonly ContactService _contactService;
+        readonly Mock<IContactRepository> _contactRepositoryMock;
+        readonly ErrorHandlerNotification _notifications;
 
         public ContactServiceTest()
         {

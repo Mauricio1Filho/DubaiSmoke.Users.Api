@@ -10,9 +10,9 @@ namespace DubaiSmoke.Users.Test.Domain.Services
 {
     public class AddressServiceTest
     {
-        AddressService _addressService;
-        Mock<IAddressRepository> _addressRepositoryMock;
-        ErrorHandlerNotification _notifications;
+        readonly AddressService _addressService;
+        readonly Mock<IAddressRepository> _addressRepositoryMock;
+        readonly ErrorHandlerNotification _notifications;
 
         public AddressServiceTest()
         {

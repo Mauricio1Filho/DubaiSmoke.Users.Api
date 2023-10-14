@@ -12,7 +12,7 @@ namespace DubaiSmoke.Users.CrossCutting.FluentValidation
     [ExcludeFromCodeCoverage]
     public class ValidateModelStateAttribute : ActionFilterAttribute
     {
-        ErrorHandlerNotification _error = new ErrorHandlerNotification();
+        readonly ErrorHandlerNotification _error = new ErrorHandlerNotification();
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             if (!context.ModelState.IsValid)

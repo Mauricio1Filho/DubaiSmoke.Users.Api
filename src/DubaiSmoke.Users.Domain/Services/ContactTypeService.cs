@@ -11,8 +11,8 @@ namespace DubaiSmoke.Users.Domain.Services
 {
     public class ContactTypeService : IContactTypeService
     {
-        private IContactTypeRepository _contactTypeRepository;
-        private ErrorHandlerNotification _notifications;
+        private readonly IContactTypeRepository _contactTypeRepository;
+        private readonly ErrorHandlerNotification _notifications;
 
         public ContactTypeService(IContactTypeRepository contactTypeRepository, ErrorHandlerNotification notifications)
         {

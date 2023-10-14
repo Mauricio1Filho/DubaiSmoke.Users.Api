@@ -11,9 +11,9 @@ namespace DubaiSmoke.Users.Test.Domain.Services
 {
     public class ContactTypeServiceTest
     {
-        ContactTypeService _contactTypeService;
-        Mock<IContactTypeRepository> _contactTypeRepositoryMock;
-        ErrorHandlerNotification _notifications;
+        readonly ContactTypeService _contactTypeService;
+        readonly Mock<IContactTypeRepository> _contactTypeRepositoryMock;
+        readonly ErrorHandlerNotification _notifications;
         public ContactTypeServiceTest()
         {
             _notifications = new ErrorHandlerNotification();

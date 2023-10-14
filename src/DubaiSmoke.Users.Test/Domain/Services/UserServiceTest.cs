@@ -10,9 +10,9 @@ namespace DubaiSmoke.Users.Test.Domain.Services
 {
     public class UserServiceTest
     {
-        UserService _userService;
-        Mock<IUserRepository> _userRepositoryMock;
-        ErrorHandlerNotification _notification;
+        readonly UserService _userService;
+        readonly Mock<IUserRepository> _userRepositoryMock;
+        readonly ErrorHandlerNotification _notification;
         public UserServiceTest()
         {
             _notification = new ErrorHandlerNotification();
