@@ -28,7 +28,6 @@ namespace DubaiSmoke.Users.Api.Controllers
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> Login([FromBody] LoginPayloadViewModel payload) => Response(await _serviceApp.LoginAsync(payload));
 
-
         [HttpPost]
         [ProducesResponseType(typeof(long), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
