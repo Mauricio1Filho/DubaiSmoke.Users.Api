@@ -26,6 +26,7 @@ namespace DubaiSmoke.Users.Api
             services.AddControllers();
             services.ConfigureDependeciesRepository(Configuration);
             services.ConfigureDependeciesServices();
+            services.AddCors();
             DbMapping.InitializeMapping();
             services.AddSwaggerGen();
 
@@ -47,6 +48,12 @@ namespace DubaiSmoke.Users.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            });
             app.UseRouting();
 
             app.UseAuthorization();
@@ -60,7 +67,7 @@ namespace DubaiSmoke.Users.Api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dubai Smoke Corp. v1.0");
                 c.RoutePrefix = string.Empty;
-            });
+            });            
             var cultureInfo = new CultureInfo("pt-BR");
             cultureInfo.NumberFormat.CurrencySymbol = "R$";
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
