@@ -52,13 +52,13 @@ namespace DubaiSmoke.Users.Domain.Services
             return result;
         }
 
-        public async Task<ContactTypeEntity> UpdateAsync(ContactTypeEntity contactType)
+        public async Task<bool> UpdateAsync(ContactTypeEntity contactType)
         {
             contactType.UpdatedAt = DateTime.Now;
 
             var result = await _contactTypeRepository.UpdateAsync(contactType);
 
-            if (result is null)
+            if (!result)
                 await _notifications.Handle(new ErrorDetail("Erro ao atualizar tipo do contato", "014", "", HttpStatusCode.UnprocessableEntity));
 
             return result;

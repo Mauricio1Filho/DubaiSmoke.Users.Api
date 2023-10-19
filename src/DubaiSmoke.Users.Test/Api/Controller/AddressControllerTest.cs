@@ -23,7 +23,7 @@ namespace DubaiSmoke.Users.Test.Api.Controller
 
             _addressServiceApp.Setup(x => x.InsertAsync(It.IsAny<AddressPayloadViewModel>())).ReturnsAsync(1);
             _addressServiceApp.Setup(x => x.SelectAsync(It.IsAny<long>())).ReturnsAsync(AddressMocks.GetAddressViewModel());
-            _addressServiceApp.Setup(x => x.UpdateAsync(It.IsAny<AddressPayloadViewModel>())).ReturnsAsync(AddressMocks.GetAddressViewModel());
+            _addressServiceApp.Setup(x => x.UpdateAsync(It.IsAny<AddressPayloadViewModel>())).ReturnsAsync(true);
             _addressServiceApp.Setup(x => x.DeleteAsync(It.IsAny<long>())).ReturnsAsync(true);
             _addressServiceApp.Setup(x => x.GetAddressByUserId(It.IsAny<long>())).ReturnsAsync(AddressMocks.GetAddressViewModelList());
         }

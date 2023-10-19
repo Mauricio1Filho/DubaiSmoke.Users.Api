@@ -22,7 +22,7 @@ namespace DubaiSmoke.Users.Test.Domain.Services
             _userRepositoryMock.Setup(s => s.DeleteAsync(It.IsAny<long>())).ReturnsAsync(true);
             _userRepositoryMock.Setup(s => s.SelectAsync(It.IsAny<long>())).ReturnsAsync(UserMocks.GetUserEntity());
             _userRepositoryMock.Setup(s => s.InsertAsync(It.IsAny<UserEntity>())).ReturnsAsync(1);
-            _userRepositoryMock.Setup(s => s.UpdateAsync(It.IsAny<UserEntity>())).ReturnsAsync(UserMocks.GetUserEntity());
+            _userRepositoryMock.Setup(s => s.UpdateAsync(It.IsAny<UserEntity>())).ReturnsAsync(true);
             _userRepositoryMock.Setup(s => s.LoginAsync(It.IsAny<UserEntity>())).ReturnsAsync(true);
         }
 
@@ -64,7 +64,7 @@ namespace DubaiSmoke.Users.Test.Domain.Services
         public async void UpdateUserError()
         {
             _userRepositoryMock.Setup(x => x.UpdateAsync(It.IsAny<UserEntity>()));
-            Assert.Null(await _userService.UpdateAsync(UserMocks.GetUserEntity()));
+            Assert.False(await _userService.UpdateAsync(UserMocks.GetUserEntity()));
             Assert.True(_notification.HasNotifications());
         }
 

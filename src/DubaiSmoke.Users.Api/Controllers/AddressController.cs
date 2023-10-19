@@ -35,7 +35,7 @@ namespace DubaiSmoke.Users.Api.Controllers
         public async Task<IActionResult> InsertAsync([FromBody] AddressPayloadViewModel payload) => Response(await _serviceApp.InsertAsync(payload));
 
         [HttpPut]
-        [ProducesResponseType(typeof(AddressViewModel), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.UnprocessableEntity)]
         public async Task<IActionResult> UpdateAsync([FromBody] AddressPayloadViewModel payload) => Response(await _serviceApp.UpdateAsync(payload));

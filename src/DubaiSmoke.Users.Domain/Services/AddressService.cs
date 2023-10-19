@@ -53,13 +53,13 @@ namespace DubaiSmoke.Users.Domain.Services
             return result;
         }
 
-        public async Task<AddressEntity> UpdateAsync(AddressEntity address)
+        public async Task<bool> UpdateAsync(AddressEntity address)
         {
             address.UpdatedAt = DateTime.Now;
 
             var result = await _addressRepository.UpdateAsync(address);
 
-            if (result is null)
+            if (!result)
                 await _notifications.Handle(new ErrorDetail($"Erro ao atualizar endereço", "004", "", HttpStatusCode.UnprocessableEntity));
 
             return result;

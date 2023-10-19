@@ -52,13 +52,13 @@ namespace DubaiSmoke.Users.Domain.Services
             return result;
         }
 
-        public async Task<UserEntity> UpdateAsync(UserEntity user)
+        public async Task<bool> UpdateAsync(UserEntity user)
         {
             user.UpdatedAt = DateTime.Now;
 
             var result = await _userRepository.UpdateAsync(user);
 
-            if (result is null)
+            if (!result)
                 await _notifications.Handle(new ErrorDetail($"Erro ao atualizar usuário", "018", string.Empty, HttpStatusCode.UnprocessableEntity));
 
             return result;

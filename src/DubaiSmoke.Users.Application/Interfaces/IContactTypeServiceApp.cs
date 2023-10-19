@@ -7,7 +7,7 @@ namespace DubaiSmoke.Users.Application.Interfaces
     {
         Task<ContactTypeViewModel> SelectAsync(long id);
         Task<long> InsertAsync(ContactTypePayloadViewModel contactType);
-        Task<ContactTypeViewModel> UpdateAsync(ContactTypeViewModel contactType);
+        Task<bool> UpdateAsync(ContactTypeViewModel contactType);
         Task<bool> DeleteAsync(long id);
     }
 }

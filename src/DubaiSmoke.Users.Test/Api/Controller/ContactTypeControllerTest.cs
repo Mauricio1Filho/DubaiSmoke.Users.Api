@@ -23,7 +23,7 @@ namespace DubaiSmoke.Users.Test.Api.Controller
 
             _contactTypeServiceApp.Setup(x => x.InsertAsync(It.IsAny<ContactTypePayloadViewModel>())).ReturnsAsync(1);
             _contactTypeServiceApp.Setup(x => x.SelectAsync(It.IsAny<long>())).ReturnsAsync(ContactTypeMocks.GetContactTypeViewModel());
-            _contactTypeServiceApp.Setup(x => x.UpdateAsync(It.IsAny<ContactTypeViewModel>())).ReturnsAsync(ContactTypeMocks.GetContactTypeViewModel());
+            _contactTypeServiceApp.Setup(x => x.UpdateAsync(It.IsAny<ContactTypeViewModel>())).ReturnsAsync(true);
             _contactTypeServiceApp.Setup(x => x.DeleteAsync(It.IsAny<long>())).ReturnsAsync(true);
         }
 

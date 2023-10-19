@@ -24,7 +24,7 @@ namespace DubaiSmoke.Users.Test.Application.Services
 
             _addressService.Setup(x => x.InsertAsync(It.IsAny<AddressEntity>())).ReturnsAsync(1);
             _addressService.Setup(x => x.SelectAsync(It.IsAny<long>())).ReturnsAsync(AddressMocks.GetAddressEntity());
-            _addressService.Setup(x => x.UpdateAsync(It.IsAny<AddressEntity>())).ReturnsAsync(AddressMocks.GetAddressEntity());
+            _addressService.Setup(x => x.UpdateAsync(It.IsAny<AddressEntity>())).ReturnsAsync(true);
             _addressService.Setup(x => x.DeleteAsync(It.IsAny<long>())).ReturnsAsync(true);
             _addressService.Setup(x => x.GetAddressByUserId(It.IsAny<long>())).ReturnsAsync(AddressMocks.GetAddressEntityList());
             _mapper.Setup(x => x.Map<AddressViewModel>(It.IsAny<AddressEntity>())).Returns(AddressMocks.GetAddressViewModel());

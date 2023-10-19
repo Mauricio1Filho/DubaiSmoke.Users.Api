@@ -23,7 +23,7 @@ namespace DubaiSmoke.Users.Test.Application.Services
 
             _userService.Setup(x => x.InsertAsync(It.IsAny<UserEntity>())).ReturnsAsync(1);
             _userService.Setup(x => x.SelectAsync(It.IsAny<long>())).ReturnsAsync(UserMocks.GetUserEntity());
-            _userService.Setup(x => x.UpdateAsync(It.IsAny<UserEntity>())).ReturnsAsync(UserMocks.GetUserEntity());
+            _userService.Setup(x => x.UpdateAsync(It.IsAny<UserEntity>())).ReturnsAsync(true);
             _userService.Setup(x => x.DeleteAsync(It.IsAny<long>())).ReturnsAsync(true);
             _userService.Setup(x => x.LoginAsync(It.IsAny<UserEntity>())).ReturnsAsync(true);
             _mapper.Setup(x => x.Map<UserViewModel>(It.IsAny<UserEntity>())).Returns(UserMocks.GetUserViewModel());
@@ -37,7 +37,7 @@ namespace DubaiSmoke.Users.Test.Application.Services
         public async void SelectUserSuccess() => Assert.NotNull(await _mockServiceApp.SelectAsync(1));
 
         [Fact]
-        public async void UpdateUserSuccess() => Assert.NotNull(await _mockServiceApp.UpdateAsync(UserMocks.GetUserViewModel()));
+        public async void UpdateUserSuccess() => Assert.True(await _mockServiceApp.UpdateAsync(UserMocks.GetUserPayloadViewModel()));
 
         [Fact]
         public async void DeleteUserSuccess() => Assert.True(await _mockServiceApp.DeleteAsync(1));
@@ -65,7 +65,7 @@ namespace DubaiSmoke.Users.Test.Application.Services
         public async void UpdateUserError()
         {
             _userService.Setup(x => x.UpdateAsync(It.IsAny<UserEntity>())).ThrowsAsync(new Exception());
-            await Assert.ThrowsAnyAsync<Exception>(async () => await _mockServiceApp.UpdateAsync(UserMocks.GetUserViewModel()));
+            await Assert.ThrowsAnyAsync<Exception>(async () => await _mockServiceApp.UpdateAsync(UserMocks.GetUserPayloadViewModel()));
         }
 
         [Fact]

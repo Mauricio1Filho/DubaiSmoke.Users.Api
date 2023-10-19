@@ -15,7 +15,6 @@ namespace DubaiSmoke.Users.Test.Mocks
             {
                 BirthDay = DateTime.Now,
                 CreatedAt = DateTime.Now,
-                DeletedAt = null,
                 HashCode = Guid.NewGuid().ToString(),
                 Id = faker.Random.Long(0, 9999),
                 Login = faker.Internet.Email(),
@@ -44,9 +43,7 @@ namespace DubaiSmoke.Users.Test.Mocks
             {
                 id = faker.Random.Long(0, 999),
                 birthDay = DateTime.Now.ToString(),
-                login = faker.Internet.Email(),
-                name = faker.Person.FullName,
-                password = faker.Internet.Password(15)
+                name = faker.Person.FullName
             };
         }
 

@@ -23,7 +23,7 @@ namespace DubaiSmoke.Users.Test.Domain.Services
             _contactTypeRepositoryMock.Setup(s => s.DeleteAsync(It.IsAny<long>())).ReturnsAsync(true);
             _contactTypeRepositoryMock.Setup(s => s.SelectAsync(It.IsAny<long>())).ReturnsAsync(ContactTypeMocks.GetContactTypeEntity());
             _contactTypeRepositoryMock.Setup(s => s.InsertAsync(It.IsAny<ContactTypeEntity>())).ReturnsAsync(1);
-            _contactTypeRepositoryMock.Setup(s => s.UpdateAsync(It.IsAny<ContactTypeEntity>())).ReturnsAsync(ContactTypeMocks.GetContactTypeEntity());
+            _contactTypeRepositoryMock.Setup(s => s.UpdateAsync(It.IsAny<ContactTypeEntity>())).ReturnsAsync(true);
         }
 
         #region Success
@@ -61,7 +61,7 @@ namespace DubaiSmoke.Users.Test.Domain.Services
         public async void UpdateContactTypeError()
         {
             _contactTypeRepositoryMock.Setup(x => x.UpdateAsync(It.IsAny<ContactTypeEntity>()));
-            Assert.Null(await _contactTypeService.UpdateAsync(ContactTypeMocks.GetContactTypeEntity()));
+            Assert.False(await _contactTypeService.UpdateAsync(ContactTypeMocks.GetContactTypeEntity()));
             Assert.True(_notifications.HasNotifications());
         }
 

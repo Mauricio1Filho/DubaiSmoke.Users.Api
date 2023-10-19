@@ -23,7 +23,7 @@ namespace DubaiSmoke.Users.Application.Services
 
         public async Task<UserViewModel> SelectAsync(long id) => _mapper.Map<UserViewModel>(await _service.SelectAsync(id));
 
-        public async Task<UserViewModel> UpdateAsync(UserViewModel user) => _mapper.Map<UserViewModel>(await _service.UpdateAsync(_mapper.Map<UserEntity>(user)));
+        public async Task<bool> UpdateAsync(UserPayloadViewModel user) => await _service.UpdateAsync(_mapper.Map<UserEntity>(user));
 
         public async Task<bool> DeleteAsync(long id) => await _service.DeleteAsync(id);
 
