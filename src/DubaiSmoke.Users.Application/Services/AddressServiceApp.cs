@@ -24,7 +24,7 @@ namespace DubaiSmoke.Users.Application.Services
 
         public async Task<long> InsertAsync(AddressPayloadViewModel address) => await _service.InsertAsync(_mapper.Map<AddressEntity>(address));
 
-        public async Task<AddressViewModel> UpdateAsync(AddressPayloadViewModel address) => _mapper.Map<AddressViewModel>(await _service.UpdateAsync(_mapper.Map<AddressEntity>(address)));
+        public async Task<bool> UpdateAsync(AddressPayloadViewModel address) => await _service.UpdateAsync(_mapper.Map<AddressEntity>(address));
 
         public async Task<bool> DeleteAsync(long id) => await _service.DeleteAsync(id);
 

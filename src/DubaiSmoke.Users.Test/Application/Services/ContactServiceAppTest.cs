@@ -24,7 +24,7 @@ namespace DubaiSmoke.Users.Test.Application.Services
 
             _contactService.Setup(x => x.InsertAsync(It.IsAny<ContactEntity>())).ReturnsAsync(1);
             _contactService.Setup(x => x.SelectAsync(It.IsAny<long>())).ReturnsAsync(ContactMocks.GetContactEntity());
-            _contactService.Setup(x => x.UpdateAsync(It.IsAny<ContactEntity>())).ReturnsAsync(ContactMocks.GetContactEntity());
+            _contactService.Setup(x => x.UpdateAsync(It.IsAny<ContactEntity>())).ReturnsAsync(true);
             _contactService.Setup(x => x.DeleteAsync(It.IsAny<long>())).ReturnsAsync(true);
             _contactService.Setup(x => x.SelectByUserIdAsync(It.IsAny<long>())).ReturnsAsync(ContactMocks.GetContactEntityList());
             _mapper.Setup(x => x.Map<ContactViewModel>(It.IsAny<ContactEntity>())).Returns(ContactMocks.GetContactViewModel());

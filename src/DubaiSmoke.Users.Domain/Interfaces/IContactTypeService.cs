@@ -6,7 +6,7 @@ namespace DubaiSmoke.Users.Domain.Interfaces
     public interface IContactTypeService
     {
         Task<long> InsertAsync(ContactTypeEntity contacyType);
-        Task<ContactTypeEntity> UpdateAsync(ContactTypeEntity contacyType);
+        Task<bool> UpdateAsync(ContactTypeEntity contacyType);
         Task<bool> DeleteAsync(long id);
         Task<ContactTypeEntity> SelectAsync(long id);
     }

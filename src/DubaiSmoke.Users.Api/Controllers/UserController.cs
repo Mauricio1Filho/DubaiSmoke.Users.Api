@@ -28,7 +28,6 @@ namespace DubaiSmoke.Users.Api.Controllers
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> Login([FromBody] LoginPayloadViewModel payload) => Response(await _serviceApp.LoginAsync(payload));
 
-
         [HttpPost]
         [ProducesResponseType(typeof(long), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
@@ -36,10 +35,10 @@ namespace DubaiSmoke.Users.Api.Controllers
         public async Task<IActionResult> InsertAsync([FromBody] UserPayloadViewModel payload) => Response(await _serviceApp.InsertAsync(payload));
 
         [HttpPut]
-        [ProducesResponseType(typeof(UserViewModel), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(ClientError), (int)HttpStatusCode.UnprocessableEntity)]
-        public async Task<IActionResult> UpdateAsync([FromBody] UserViewModel payload) => Response(await _serviceApp.UpdateAsync(payload));
+        public async Task<IActionResult> UpdateAsync([FromBody] UserPayloadViewModel payload) => Response(await _serviceApp.UpdateAsync(payload));
 
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]

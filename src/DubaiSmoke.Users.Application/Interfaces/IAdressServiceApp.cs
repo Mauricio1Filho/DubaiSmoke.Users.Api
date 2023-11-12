@@ -8,7 +8,7 @@ namespace DubaiSmoke.Users.Application.Interfaces
     {
         Task<AddressViewModel> SelectAsync(long id);
         Task<long> InsertAsync(AddressPayloadViewModel address);
-        Task<AddressViewModel> UpdateAsync(AddressPayloadViewModel address);
+        Task<bool> UpdateAsync(AddressPayloadViewModel address);
         Task<bool> DeleteAsync(long id);
         Task<List<AddressViewModel>> GetAddressByUserId(long userId);
     }

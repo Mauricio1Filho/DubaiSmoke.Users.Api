@@ -17,7 +17,6 @@ namespace DubaiSmoke.Users.Test.Mocks
                 Id = faker.Random.Long(0, 9999),
                 CreatedAt = DateTime.Now,
                 UpdatedAt = null,
-                DeletedAt = null,
                 HashCode = Guid.NewGuid().ToString(),
                 AddressComplement = string.Empty,
                 AddressName = faker.Address.StreetAddress(),

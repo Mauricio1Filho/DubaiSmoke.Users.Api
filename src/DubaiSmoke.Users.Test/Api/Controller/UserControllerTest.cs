@@ -23,7 +23,7 @@ namespace DubaiSmoke.Users.Test.Api.Controller
 
             _userServiceApp.Setup(x => x.InsertAsync(It.IsAny<UserPayloadViewModel>())).ReturnsAsync(1);
             _userServiceApp.Setup(x => x.SelectAsync(It.IsAny<long>())).ReturnsAsync(UserMocks.GetUserViewModel());
-            _userServiceApp.Setup(x => x.UpdateAsync(It.IsAny<UserViewModel>())).ReturnsAsync(UserMocks.GetUserViewModel());
+            _userServiceApp.Setup(x => x.UpdateAsync(It.IsAny<UserPayloadViewModel>())).ReturnsAsync(true);
             _userServiceApp.Setup(x => x.DeleteAsync(It.IsAny<long>())).ReturnsAsync(true);
             _userServiceApp.Setup(x => x.LoginAsync(It.IsAny<LoginPayloadViewModel>())).ReturnsAsync(true);
         }
@@ -36,7 +36,7 @@ namespace DubaiSmoke.Users.Test.Api.Controller
         public async void SelectUserSuccess() => Assert.IsType<OkObjectResult>(await _controller.SelectAsync(1));
 
         [Fact]
-        public async void UpdateUserSuccess() => Assert.IsType<OkObjectResult>(await _controller.UpdateAsync(UserMocks.GetUserViewModel()));
+        public async void UpdateUserSuccess() => Assert.IsType<OkObjectResult>(await _controller.UpdateAsync(UserMocks.GetUserPayloadViewModel()));
 
         [Fact]
         public async void DeleteUserSuccess() => Assert.IsType<OkObjectResult>(await _controller.DeleteAsync(1));
@@ -63,8 +63,8 @@ namespace DubaiSmoke.Users.Test.Api.Controller
         [Fact]
         public async void UpdateUserError()
         {
-            _userServiceApp.Setup(x => x.UpdateAsync(It.IsAny<UserViewModel>())).ThrowsAsync(new Exception());
-            await Assert.ThrowsAnyAsync<Exception>(async () => await _controller.UpdateAsync(UserMocks.GetUserViewModel()));
+            _userServiceApp.Setup(x => x.UpdateAsync(It.IsAny<UserPayloadViewModel>())).ThrowsAsync(new Exception());
+            await Assert.ThrowsAnyAsync<Exception>(async () => await _controller.UpdateAsync(UserMocks.GetUserPayloadViewModel()));
         }
 
         [Fact]

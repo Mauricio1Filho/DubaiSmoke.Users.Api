@@ -23,7 +23,7 @@ namespace DubaiSmoke.Users.Test.Domain.Services
             _addressRepositoryMock.Setup(s => s.DeleteAsync(It.IsAny<long>())).ReturnsAsync(true);
             _addressRepositoryMock.Setup(s => s.SelectAsync(It.IsAny<long>())).ReturnsAsync(AddressMocks.GetAddressEntity());
             _addressRepositoryMock.Setup(s => s.InsertAsync(It.IsAny<AddressEntity>())).ReturnsAsync(1);
-            _addressRepositoryMock.Setup(s => s.UpdateAsync(It.IsAny<AddressEntity>())).ReturnsAsync(AddressMocks.GetAddressEntity());
+            _addressRepositoryMock.Setup(s => s.UpdateAsync(It.IsAny<AddressEntity>())).ReturnsAsync(true);
             _addressRepositoryMock.Setup(s => s.GetAddressByUserId(It.IsAny<long>())).ReturnsAsync(AddressMocks.GetAddressEntityList());
         }
 
@@ -73,7 +73,7 @@ namespace DubaiSmoke.Users.Test.Domain.Services
         public async void UpdateAddressError()
         {
             _addressRepositoryMock.Setup(x => x.UpdateAsync(It.IsAny<AddressEntity>()));
-            Assert.Null(await _addressService.UpdateAsync(AddressMocks.GetAddressEntity()));
+            Assert.False(await _addressService.UpdateAsync(AddressMocks.GetAddressEntity()));
             Assert.True(_notifications.HasNotifications());
         }
 

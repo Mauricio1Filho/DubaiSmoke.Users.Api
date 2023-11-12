@@ -23,7 +23,7 @@ namespace DubaiSmoke.Users.Test.Application.Services
 
             _contactTypeService.Setup(x => x.InsertAsync(It.IsAny<ContactTypeEntity>())).ReturnsAsync(1);
             _contactTypeService.Setup(x => x.SelectAsync(It.IsAny<long>())).ReturnsAsync(ContactTypeMocks.GetContactTypeEntity());
-            _contactTypeService.Setup(x => x.UpdateAsync(It.IsAny<ContactTypeEntity>())).ReturnsAsync(ContactTypeMocks.GetContactTypeEntity());
+            _contactTypeService.Setup(x => x.UpdateAsync(It.IsAny<ContactTypeEntity>())).ReturnsAsync(true);
             _contactTypeService.Setup(x => x.DeleteAsync(It.IsAny<long>())).ReturnsAsync(true);
             _mapper.Setup(x => x.Map<ContactTypeViewModel>(It.IsAny<ContactTypeEntity>())).Returns(ContactTypeMocks.GetContactTypeViewModel());
         }

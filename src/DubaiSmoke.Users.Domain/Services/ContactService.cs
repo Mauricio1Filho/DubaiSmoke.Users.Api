@@ -53,13 +53,13 @@ namespace DubaiSmoke.Users.Domain.Services
             return result;
         }
 
-        public async Task<ContactEntity> UpdateAsync(ContactEntity contact)
+        public async Task<bool> UpdateAsync(ContactEntity contact)
         {
             contact.UpdatedAt = DateTime.Now;
 
             var result = await _contactRepository.UpdateAsync(contact);
 
-            if (result is null)
+            if (!result)
                 await _notifications.Handle(new ErrorDetail("Erro ao atualizar contato", "009", "", HttpStatusCode.UnprocessableEntity));
 
             return result;
