@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /build
 
-RUN dotnet nuget add source http://192.168.15.140:4000/v3/index.json -n NugetServer
+RUN dotnet nuget add source http://dubaismoke.corp.com:4000/v3/index.json -n NugetServer
 
 COPY . /build
 RUN dotnet restore
